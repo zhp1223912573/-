@@ -57,7 +57,7 @@ public class 单词搜索_lc_212 {
     }
 
     private void backtract(Trie trie,char[][] board, boolean[][] visited,int i,int j,Set<String> set) {
-        //如果字典树里压根就不存在该字符，那么就说明当前word不可能存在于该字符
+        //如果字典树里压根就不存在该字符，那么就说明当前word不可能存在该字符
             if(trie.children[board[i][j]-'a']==null){
                 return ;
             }

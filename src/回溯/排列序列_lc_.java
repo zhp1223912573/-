@@ -8,7 +8,7 @@ import java.util.Arrays;
  * https://leetcode.cn/problems/permutation-sequence/solution/di-kge-pai-lie-by-leetcode-solution/
  */
 public class 排列序列_lc_ {
-    /**
+    /**题解
      * https://leetcode.cn/problems/permutation-sequence/solution/hui-su-jian-zhi-python-dai-ma-java-dai-ma-by-liwei/
      */
      class Solution {

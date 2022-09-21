@@ -49,6 +49,6 @@ public class ConvertToLetterString {
     }
 
     public static void main(String[] args) {
-        System.out.println(process("11111"));
+        System.out.println(process("111"));
     }
 }
