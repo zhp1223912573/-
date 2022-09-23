@@ -35,7 +35,7 @@ public class _统计词频topK {
     public static class NodeComparator implements Comparator<Node>{
         @Override
         public int compare(Node o1, Node o2) {
-            return o2.times-o1.times;
+            return o1.times-o2.times;
         }
     }
 
@@ -90,6 +90,7 @@ public class _统计词频topK {
         String[] arr1 = { "A", "B", "A", "C", "A", "C", "B", "B", "K" };
         printTopKandRank(arr1, 2);
 
+        System.out.println("********************");
         String[] arr2 = generateRandomArray(50, 10);
         int topK = 3;
         //printArray(arr2);
