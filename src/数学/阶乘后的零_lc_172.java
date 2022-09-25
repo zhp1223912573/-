@@ -6,6 +6,11 @@ package 数学;
  * https://leetcode.cn/problems/factorial-trailing-zeroes/
  */
 public class 阶乘后的零_lc_172 {
+    /**
+     * https://leetcode.cn/problems/factorial-trailing-zeroes/solution/xiang-xi-tong-su-de-si-lu-fen-xi-by-windliang-3/
+     * @param n
+     * @return
+     */
     public int trailingZeroes(int n) {
 
         int count = 0;
