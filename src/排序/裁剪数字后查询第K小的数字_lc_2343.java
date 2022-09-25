@@ -90,7 +90,7 @@ public class 裁剪数字后查询第K小的数字_lc_2343 {
             lists.get(0).add(i);
         }
         //开始第一轮排序
-        for(int i = 0;i<=m;i++){
+        for(int i = 1;i<=m;i++){
             //表示此轮的出现的0-9数值的所有坐标
             List<List<Integer>> turn = new ArrayList<>(10);
             for(int i1 = 0;i1<10;i1++){
