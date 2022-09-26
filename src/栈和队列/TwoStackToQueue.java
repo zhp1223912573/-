@@ -17,7 +17,7 @@ public class TwoStackToQueue {
 
     /**
      * s1存储栈元素 s2作为辅助栈
-     * 每push一个元素 则将s1总元素pop到s2直到 s1为空
+     * 每push一个元素前 先将s1中元素pop到s2直到 s1为空
      * 再将s2元素pop会s1中 实现翻转
      * front用来记录队首元素 方便弹出
      * @param x

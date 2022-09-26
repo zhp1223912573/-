@@ -12,6 +12,8 @@ import java.util.Stack;
 public class 每日温度_lc_739 {
     /**
      * 单调栈
+     * 典型的单调栈问题，维护一个单调递减的栈，要压入的元素大于当前栈顶元素，就弹出栈顶元素，直到栈顶元素小于即将压入的元素
+     * 弹出的元素的下一个最近更大值就是压入的栈顶元素
      * @param temperatures
      * @return
      */

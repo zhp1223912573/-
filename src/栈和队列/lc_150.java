@@ -12,6 +12,11 @@ import java.util.LinkedList;
  *
  */
 public class lc_150 {
+    /**
+     * 后缀表达式到中缀表达式的切换
+     * @param tokens
+     * @return
+     */
     public int evalRPN(String[] tokens) {
 
         if(tokens==null||tokens.length==0) return -1;
@@ -29,6 +34,7 @@ public class lc_150 {
             } else if (c == '*') {
                 stack.push( stack.pop() * stack.pop());
             } else {
+                //后弹除先弹
                 int num1 = stack.pop();
                 int num2 = stack.pop();
                 stack.push( num2/num1);

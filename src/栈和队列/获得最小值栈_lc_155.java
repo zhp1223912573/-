@@ -10,6 +10,7 @@ import java.util.Stack;
  * 的操作。
  * 要求：1.pop、push、getMin操作的时间复杂度都是O(1)；2.设计的栈类型可以
  * 使用现成的栈结构
+ * https://leetcode.cn/problems/min-stack/
  */
 public class 获得最小值栈_lc_155 {
     /**
