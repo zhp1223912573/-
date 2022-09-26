@@ -12,6 +12,7 @@ import java.util.List;
  *
  */
 public class 合并区间_lc_56 {
+
     /**
      * 首先我们将所有区间按照左端点进行排序，然后加入一个merged数组内，按顺序检查每个区间：
      * 1.如果当前检查的区间的左端点在merged最后一个区间的右端点后，那么这两个区间不重合，
@@ -36,9 +37,12 @@ public class 合并区间_lc_56 {
 
         for(int i=0;i<intervals.length;i++){
             int L = intervals[i][0],R = intervals[i][1];
+            //放入新的区间
             if(merged.size()==0 || merged.get(merged.size()-1)[1]<L){
                 merged.add(new int[] {L,R});
-            }else{
+            }
+            //扩大覆盖区间
+            else{
                 merged.get(merged.size()-1)[1]=Math.max(R,merged.get(merged.size()-1)[1]);
             }
         }

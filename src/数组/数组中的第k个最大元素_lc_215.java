@@ -61,8 +61,10 @@ public class 数组中的第k个最大元素_lc_215 {
             Random random = new Random(System.currentTimeMillis());
             int randomIndex = low + random.nextInt(high-low+1);
 
-            //新的9快排代码（相比于之前的，更简洁，更好理解）
-            swap(nums,randomIndex,low);//将随喜旋转的pivot放置在区间的第一个元素
+            /**新的快排代码（相比于之前的，更简洁，更好理解）
+             */
+
+            swap(nums,randomIndex,low);//将随机选择的pivot放置在区间的第一个元素
             int pivot = nums[low];//得到该标兵数
             int index = low;
             for(int i=low+1;i<=high;i++){
@@ -77,7 +79,10 @@ public class 数组中的第k个最大元素_lc_215 {
 
             return index;
 
-            //过去的快排代码
+            /**
+             *   过去的快排代码
+             */
+
 //            int temp = nums[randomIndex];
 //            nums[randomIndex] =nums[low];
 //            nums[low] = temp;
@@ -102,6 +107,8 @@ public class 数组中的第k个最大元素_lc_215 {
 
 
         }
+
+
 
     /**小根堆
      *

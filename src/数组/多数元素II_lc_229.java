@@ -54,6 +54,7 @@ public class 多数元素II_lc_229 {
 
         }
 
+        //得到了两个候选者后还需要在原数组进行一次数值统计，避免特殊清空的出现
         int count1 = 0;
         int count2 = 0;
         int n = nums.length;

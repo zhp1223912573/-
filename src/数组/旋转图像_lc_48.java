@@ -46,6 +46,7 @@ public class 旋转图像_lc_48 {
      */
     public void rotate1(int[][] matrix){
         int n = matrix.length;
+        //水平反转
         for(int i=0;i<(n/2);i++){
             for(int j=0;j<n;j++){
                 int temp = matrix[i][j];
@@ -53,7 +54,7 @@ public class 旋转图像_lc_48 {
                 matrix[n-i-1][j] = temp;
             }
         }
-
+        //对角线反转
         for(int i=0;i<n;i++){
             for(int j=0;j<i;j++){
                 int temp = matrix[i][j];

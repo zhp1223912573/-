@@ -11,6 +11,7 @@ import java.util.Map;
 public class 两数之和_lc_1 {
     /**
      * 思路总结
+     * 非有序数组，无法双指针
      * 1.暴力 时间：O(n^2),空间O(1)
      * 2.hash 时间：O(n),空间O(n)
      */

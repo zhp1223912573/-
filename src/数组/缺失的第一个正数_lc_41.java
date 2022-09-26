@@ -10,6 +10,9 @@ public class 缺失的第一个正数_lc_41 {
      * 看解答把，无话可说。
      * @param nums
      * @return
+     *
+     * 将在【1，n】范围内的数放在下标值与该数值num【i】一致的位置上，
+     * 最后检查哪些位置上的数字不对，就是我们要返回的最小正整数
      */
     public int firstMissingPositive(int[] nums) {
         int n = nums.length;

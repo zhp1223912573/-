@@ -49,16 +49,20 @@ public class 多数元素_lc_169 {
         return majorityElementRec(nums, 0, nums.length - 1);
     }
     private int majorityElementRec(int[] nums, int low, int high) {
+        //只剩下一个元素，直接返回
         if(low==high){
             return nums[low];
         }
 
+        //分裂数组，得到出现次数最多的数值
         int mid = (high-low)/2+low;
         int left = majorityElementRec(nums,low,mid);
         int right = majorityElementRec(nums,mid+1,high);
 
+        //相等直接返回
         if(left==right) return left;
 
+        //统计数值出现的次数
         int leftCount = countInRange(nums,left,low,high);
         int rightCount = countInRange(nums,right,low,high);
 

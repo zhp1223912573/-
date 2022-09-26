@@ -11,6 +11,7 @@ import java.util.Random;
  */
 public class 打乱数组_lc_384 {
     /**
+     *
      * 暴力法
      * 直接保存原始数组和洗牌后的数组。
      * 利用随机函数生成
