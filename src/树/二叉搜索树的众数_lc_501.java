@@ -86,6 +86,7 @@ public class 二叉搜索树的众数_lc_501 {
             list.add(root.val);
         }
 
+        //出现最新的众数 清空先前的众数
         if(count>maxcount){
             maxcount=count;
             list.clear();

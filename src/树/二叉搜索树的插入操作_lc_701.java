@@ -15,7 +15,7 @@ public class 二叉搜索树的插入操作_lc_701 {
      * 大于节点值则左递归 小于则右递归
      * 直到当前节点为空 该节点就是要插入的位置
      *
-     * @param root
+     * @param
      * @param val
      * @return
      */
@@ -38,7 +38,7 @@ public class 二叉搜索树的插入操作_lc_701 {
 
     /**
      * 递归过程也可以不返回节点
-     * 但需要一个parent节点记录要插入节点的父节点
+     * 但需要一个parent点
      */
     TreeNode parent ;
     public void  insert1(TreeNode root,int val){

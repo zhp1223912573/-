@@ -9,6 +9,7 @@ import java.util.Queue;
  * @author zhp
  * @date 2021-11-27 10:52
  * 二叉树的所有路径
+ * 返回所有从根节点到叶子节点的路径
  */
 public class 二叉树所有路径_lc_257 {
     public List<String> binaryTreePaths(TreeNode root) {

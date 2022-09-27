@@ -9,6 +9,12 @@ import java.util.Stack;
  * https://leetcode-cn.com/problems/convert-bst-to-greater-tree/
  */
 public class 二叉搜索树转化为累加树_lc_538 {
+    /**
+     * 将节点值转化为大于等于当前节点的其他所有节点之和，画图观察可得，通过逆序的中序遍历即可实现
+     * 也就是右中左的顺序遍历节点并记录累加和即可。
+     * @param root
+     * @return
+     */
     public TreeNode convertBST(TreeNode root) {
         sum=0;
         convert(root);

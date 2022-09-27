@@ -33,8 +33,8 @@ public class 二叉树最小深度_lc_111 {
         return min+1;
     }
 
-    /**迭代寻找
-     * 如果出现
+    /**广度优先遍历
+     * 利用广度优先遍历最先到达叶子节点的性质，求解出最小深度
      * @param root
      * @return
      */
@@ -48,6 +48,7 @@ public class 二叉树最小深度_lc_111 {
             depth++;
             while(size>0){
                 TreeNode node =queue.poll();
+                size--;
                 if(node.left!=null) queue.offer(node.left);
                 if(node.right!=null) queue.offer(node.right);
                 if(node.left==null && node.right==null) return depth;
