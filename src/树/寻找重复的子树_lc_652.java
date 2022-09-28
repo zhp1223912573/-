@@ -26,7 +26,7 @@ public class 寻找重复的子树_lc_652 {
     /**序列化树
      * 时间复杂度O（n^2)
      * 将子树序列化，比较不同子树是否一致，一致的画，保存起来。
-     * 用map保存某一序列化子树的字符串以及它的出现次数的映射关系，
+     * 用map保存某2现次数的映射关系，
      * 当前不同结点的序列化树在map中出现两次，说明存在结构完全相同的子树，
      * 这时就可以保存结点了。
      * @param root
@@ -61,7 +61,11 @@ public class 寻找重复的子树_lc_652 {
     }
 
 
-
+    /**
+     * 得到所有子树节点，依次子树是否一致的比较，得到一个不重复的子树节点集合，
+     * @param root
+     * @return
+     */
     public List<TreeNode> findDuplicateSubtrees(TreeNode root) {
         List<TreeNode> subTree = new ArrayList<>();
         Set<TreeNode> ans = new HashSet<>();

@@ -18,9 +18,10 @@ public class 反转二叉树_lc_226 {
     public TreeNode invertTree1(TreeNode root) {
         if(root==null) return null;
 
+        //记录左右子树
         TreeNode left = root.left;
         TreeNode right = root.right;
-
+        //翻转左右子树
         root.left = invertTree1(right);
         root.right = invertTree1(left);
 

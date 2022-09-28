@@ -23,7 +23,7 @@ public class 删除二叉树结点_lc_450 {
     public TreeNode delete(TreeNode root,int key){
         if(root==null) return null;
         if(root.val==key){
-            if(root.right==null){   // 这里第二次操作目标值：最终删除的作用
+            if(root.right==null){   // 这里可以起到第二次删除key目标值：最终删除的作用，二次删除会将key值节点通过null覆盖
                 return root.left;   //此处不能改为null 因为如果key就是该树的根节点 应当直接返回其左节点 （2，1）
             }
             TreeNode cur = root.right;//和右子树中的最左节点交换
@@ -32,6 +32,7 @@ public class 删除二叉树结点_lc_450 {
                 cur=cur.left;
             }
             //通过交换节点值实现第一次删除
+            //在后续的递归操作中会对目标值key进行第二次删除，
             int val = root.val;
             root.val=cur.val;
             cur.val=val;
@@ -43,6 +44,7 @@ public class 删除二叉树结点_lc_450 {
     }
 
     /**递归
+     * 思路基本同上一样，只是该方法针对的是二叉搜索树，可以利用其特性适当的缩小范围
      * 删除目标节点
      * 1、左子节点为空 返回右节点
      * 2.右子节点为空 返回左节点
@@ -73,7 +75,7 @@ public class 删除二叉树结点_lc_450 {
 
             root.val = cur.val;
             cur.val = key;
-
+            //继续去删除替换后的节点
             root.right = delete1(root.right,key);
         }
 

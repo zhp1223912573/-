@@ -12,7 +12,9 @@ public class 填充每一个节点的下一个右侧节点_lc_116 {
 
 
     /**
-     * 广搜
+     * 层序遍历
+     * 逆序读取每层的节点，设置一个next节点表示当前节点的下一个节点
+     * 将当前节点的next指针指向next节点即可完成连接
      * @param root
      * @return
      */
@@ -89,6 +91,7 @@ public class 填充每一个节点的下一个右侧节点_lc_116 {
                 }
                 head = head.next;
             }
+            //向下一层的最左节点移动
             leftmost = leftmost.left;
         }
         return root;

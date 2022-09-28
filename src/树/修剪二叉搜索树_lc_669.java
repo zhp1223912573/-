@@ -58,6 +58,9 @@ public class 修剪二叉搜索树_lc_669
 
     /**
      * 迭代法
+     *
+     * 移动根节点到区间 low--high的范围内，
+     * 在删除当前根节点所有不在区间内的子节点
      */
     public TreeNode trim2(TreeNode root,int low,int high){
         if(root==null) return null;
@@ -80,8 +83,9 @@ public class 修剪二叉搜索树_lc_669
         }
 
         cur=root;
+        /*开始删除不在区间范围内的节点*/
         while(cur!=null){
-            while(cur.right!=null && cur.left.val>high){
+            while(cur.right!=null && cur.right.val>high){
                 cur.right=cur.right.left;
             }
             cur=cur.right;
