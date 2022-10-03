@@ -35,6 +35,8 @@ public class 摆动序列I_lc_376 {
      * down记录当前遍历得到的以某个元素结尾的最长下降摆动子序列的长度
      * up记录当前遍历得到的以某个元素结尾的最长上升摆动子序列长度
      *
+     *https://leetcode.cn/problems/wiggle-subsequence/solution/bai-dong-xu-lie-by-leetcode-solution-yh2m/
+     *
      * @param nums
      * @return
      */

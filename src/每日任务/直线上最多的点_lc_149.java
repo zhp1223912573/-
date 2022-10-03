@@ -10,6 +10,12 @@ import java.util.Map;
  * https://leetcode.cn/problems/max-points-on-a-line/
  */
 public class 直线上最多的点_lc_149 {
+    /**
+     * 计算每两个点之间的斜率（使用字符串来表示分数，并且需要约分，从而保证一致性）
+     * 通过map保存斜率，得到最大斜率总和数+1就是直线上最多的点
+     * @param points
+     * @return
+     */
     public int maxPoints(int[][] points) {
         int m = points.length;
         int ans = 0;

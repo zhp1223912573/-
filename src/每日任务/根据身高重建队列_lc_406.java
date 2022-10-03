@@ -14,6 +14,7 @@ import java.util.List;
 public class 根据身高重建队列_lc_406 {
     /**
      * 按身高从高到矮排序
+     * 同等身高按前面的人数逆序排序
      *
      * @param people
      * @return

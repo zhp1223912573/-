@@ -8,7 +8,7 @@ package 每日任务;
 public class 被围绕的区域_lc_130 {
     /**
      * 任何边界上的'o'都不会变成'x'，而所有与'o'直接或间接相连的'o'也都不会变成'x'，
-     * 所以，转化问题为从边界上的'o'出发，找到所有与该起点相连的'o'他们全部都不设置为'x',
+     * 所以，转化问题为从边界上的'o'出发，找到所有与该起点相连的'o'，他们全部都不设置为'x'（实现方法中设置为A),
      * 最后剩下的'o'就应该设置为'x'
      * @param board
      */
@@ -16,6 +16,7 @@ public class 被围绕的区域_lc_130 {
             int m = board.length;
             int n = board[0].length;
 
+            //从边框上的字符进行深搜，找到与边界上的O相连的所有其他O，在dfs中将这些O设置为A
             for(int i=0;i<m;i++){
                 dfs(board,i,0);
                 dfs(board,i,n-1);
@@ -26,6 +27,7 @@ public class 被围绕的区域_lc_130 {
                 dfs(board,m-1,i);
             }
 
+            //搜索完成，将A字符还原为O，而剩下的O是被X包围的，直接设置为X
             for(int i=0;i<m;i++){
                 for(int j=0;j<n;j++){
                     if(board[i][j]=='A'){

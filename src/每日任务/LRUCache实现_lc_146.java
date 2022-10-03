@@ -6,22 +6,23 @@ import java.util.Map;
 /**
  * @author zhp
  * @date 2022-07-31 0:48
+ *最近最少使用缓存算法
  */
-public class LRUCache实现_lc_146 {
+public class LRUCache实现_lc_146<Key,Value> {
     //双向结点
     class DLinkedNode{
-        int key;
-        int value;
+        Key key;
+        Value value;
         DLinkedNode prev;
         DLinkedNode next;
         DLinkedNode(){};
-        DLinkedNode(int key,int value){
+        DLinkedNode(Key key,Value value){
             this.key = key;
             this.value = value;
         }
     }
     //记录标号与节点的映射关系
-    Map<Integer,DLinkedNode> cache = new HashMap<>();
+    Map<Key,DLinkedNode> cache = new HashMap<>();
     //双向链表伪头尾结点
     DLinkedNode head;
     DLinkedNode tail;
@@ -39,11 +40,11 @@ public class LRUCache实现_lc_146 {
         tail.prev = head;
     }
 
-    public int get(int key) {
+    public Value get(Key key) {
         //得到结点
         DLinkedNode node = cache.get(key);
         if(node==null){
-            return -1;//结点不存在
+            return null;//结点不存在
         }
         //将当前结点移动到双向链表首部
         moveToHead(node);
@@ -51,15 +52,15 @@ public class LRUCache实现_lc_146 {
 
     }
 
-    public void put(int key, int value) {
+    public void put(Key key, Value value) {
         //查看放入key是否已经存在
         DLinkedNode node = cache.get(key);
 
         if(node==null){
             //不存在，创建新结点
             DLinkedNode newnode = new DLinkedNode(key,value);
-            //放入内存
             cache.put(key,newnode);
+            //放入内存
             //此处为添加到链表首部
             addToHead(newnode);
             ++size;//更新此时cache内结点的数量
