@@ -18,9 +18,9 @@ public class hanobi_汉诺比 {
 
     /**
      * 分析该问题过程：
-     * 1.将1——i-1的盘从start移动到other，
-     * 2.将i盘从start移动到end
-     * 3.将1中移动到other的所有盘再移动end
+     * 1.将1——n-1的盘从start移动到other，
+     * 2.将第n个盘从start移动到end
+     * 3.将步骤1中移动到other的所有盘再移动end
      *
      * @param n
      */
@@ -40,6 +40,6 @@ public class hanobi_汉诺比 {
     }
 
     public static void main(String[] args) {
-        hanobi(10);
+        hanobi(3);
     }
 }

@@ -11,7 +11,7 @@ import java.util.Stack;
  */
 public class _递归逆序栈 {
     /**
-     * 为了实现逆序，需要一个能将当前栈蒂元素出栈的函数
+     * 为了实现逆序，需要一个能将当前栈底元素出栈的函数
      */
     public static int popBottom(Stack<Integer> stack){
         //先获取当前栈顶元素并保存，这样后续才能弹出栈底元素

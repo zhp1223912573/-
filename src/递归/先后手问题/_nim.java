@@ -1,4 +1,4 @@
-package 博弈论;
+package 递归.先后手问题;
 
 /**
  * @author zhp
