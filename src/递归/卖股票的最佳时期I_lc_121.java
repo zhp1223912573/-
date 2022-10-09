@@ -6,7 +6,7 @@ import java.util.Stack;
  * @author zhp
  * @date 2022-09-06 22:15
  * 股票系列第一题
- *
+ *https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/
  */
 public class 卖股票的最佳时期I_lc_121 {
     /**贪心

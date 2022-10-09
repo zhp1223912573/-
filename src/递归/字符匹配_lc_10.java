@@ -116,7 +116,7 @@ public class 字符匹配_lc_10 {
                     }
                 }else{
                     if(matches(s,p,i,j)){
-                        f[i][j] = f[i-1][j-1];
+                        f[i][j] |= f[i-1][j-1];
                     }
                 }
             }

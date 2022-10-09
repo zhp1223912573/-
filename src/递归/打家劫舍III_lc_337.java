@@ -90,7 +90,7 @@ public class 打家劫舍III_lc_337 {
             int right[] = rob3(root.right);
 
             //第一种情况 偷当前结点
-            res[0] = root.val+left[0]+right[0];
+            res[0] = root.val+left[1]+right[1];
             //第二种情况 不偷当前结点
             res[1] = Math.max(left[0],left[1])+Math.max(right[0],right[1]);
             return res;
