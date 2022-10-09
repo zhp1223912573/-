@@ -16,8 +16,7 @@ public class Sort {
     }
     /**
      * 选择排序
-     * 找到最小的元素 将该元素和未排序好的数组的最左端元素进行交换
-     * 直到数组末尾
+     * 找到最小的元素 将该元素和未排序好的数组的最左端元素进行交换,直到数组末尾。
      * @param a
      */
     public static void Selection(Comparable[] a){
@@ -32,6 +31,22 @@ public class Sort {
             show(a);
         }
 
+    }
+
+    /**冒泡排序
+     *将数组中相邻元素从前往后依次进行比较，如果前一个元素比后一个元素大，则交换，一趟下来后最大元素就在数组的末尾。
+     */
+    public static void Bubblesort(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    int tmp = 0;
+                    tmp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = tmp;
+                }
+            }
+        }
     }
 
     /**
@@ -120,6 +135,39 @@ public class Sort {
         return right;
     }
 
+    public int partition(int[] nums,int low,int high){
+        //选定随机位置的值作为pivot
+        Random random = new Random(System.currentTimeMillis());
+        int randomIndex = low + random.nextInt(high-low+1);
+
+        /**新的快排代码（相比于之前的，更简洁，更好理解）
+         */
+
+        swap(nums,randomIndex,low);//将随机选择的pivot放置在区间的第一个元素
+        int pivot = nums[low];//得到该标兵数
+        int index = low;
+        for(int i=low+1;i<=high;i++){
+            if(nums[i]>=pivot){
+                //当前遍历到的数大于pivot值，则将其与index位置上的数交换，保证大于pivot的所有数位于数组前端
+                swap(nums,index+1,i);
+                index++;
+            }
+        }
+        //不要忘了将low位置的数值交换到数组中的index停留位置。
+        swap(nums,index,low);
+
+        return index;
+
+
+    }
+    private void swap(int[] nums, int l, int r) {
+        int temp = nums[l];
+        nums[l] = nums[r];
+        nums[r] = temp;
+
+    }
+
+
     /**
      * 归并排序参数及函数
      */
@@ -192,8 +240,6 @@ public class Sort {
             else       a[i]=temp[right++];
         }
     }
-
-
 
     private static void exchange(Comparable[] a, int i,int j){
         Comparable temp=a[i];
