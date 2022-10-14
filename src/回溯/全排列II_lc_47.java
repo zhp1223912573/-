@@ -1,8 +1,6 @@
 package 回溯;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author zhp
@@ -30,6 +28,14 @@ public class 全排列II_lc_47 {
         return ans;
     }
 
+    /**
+     *
+     * @param ans
+     * @param box
+     * @param nums
+     * @param visited
+     * @param index
+     */
     private void backtract(List<List<Integer>> ans, List<Integer> box, int[] nums, boolean[] visited, int index) {
         if(index==nums.length){
             ans.add(new ArrayList<>(box));
@@ -45,6 +51,42 @@ public class 全排列II_lc_47 {
             visited[i] = false;
             box.remove(index);
 
+        }
+    }
+
+    /**新的解题思路
+     * 采用dfs，每一层都设置一个set保存插入的元素，如果出现重复元素说明之前一定出现过同一排列，直接跳过。
+     * 思路：https://leetcode.cn/problems/zi-fu-chuan-de-pai-lie-lcof/solution/mian-shi-ti-38-zi-fu-chuan-de-pai-lie-hui-su-fa-by/
+     */
+    class Solution {
+        List<String> res = new LinkedList<>();
+        char[] ch;
+        public String[] permutation(String s) {
+            ch = s.toCharArray();
+            dfs(0);
+            return res.toArray(new String[res.size()]);
+        }
+
+        void dfs(int x){
+            if(x==ch.length-1){
+                res.add(String.valueOf(ch));
+            }
+
+            HashSet<Character> set = new HashSet<>();
+            for(int i=x;i<ch.length;i++){
+                if(set.contains(ch[i])) continue;
+                set.add(ch[i]);
+                swap(i,x);
+                dfs(x+1);
+                swap(i,x);
+
+            }
+        }
+
+        void swap(int a,int b ){
+            char temp = ch[a];
+            ch[a] = ch[b];
+            ch[b] = temp;
         }
     }
 }
