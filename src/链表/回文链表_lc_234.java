@@ -34,7 +34,7 @@ public class 回文链表_lc_234 {
             prepre = pre;
         }
 
-        //如果此时fast不指向空，说明当前链表的节点个数为偶数个，需要使slow和pre指向不同且相邻的节点
+        //如果此时fast不指向空，说明当前链表的节点个数为奇数个，需要使slow和pre指向不同且相邻的节点
         if(fast!=null){
             slow = slow.next;
         }
