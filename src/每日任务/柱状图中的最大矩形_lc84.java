@@ -46,4 +46,19 @@ public class 柱状图中的最大矩形_lc84 {
         }
         return max;
     }
+
+    public static void main(String[] args) {
+        try{
+            try{
+                throw new Exception("12");
+            }finally {
+                System.out.println("inside");
+            }
+
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }finally {
+            System.out.println("outside");
+        }
+    }
 }
