@@ -1,5 +1,8 @@
 package 递归;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author zhp
  * @date 2022-06-13 15:24
@@ -25,6 +28,9 @@ public class hanobi_汉诺比 {
      * @param n
      */
     private static void fun(int n,String start,String end,String other) {
+
+        List<Integer> a = new ArrayList<>();
+        a.remove(a.size());
         if(n==1)    {
             System.out.println("移动盘子"+n+" from:"+start+" to:"+end);
         }else{
