@@ -34,7 +34,7 @@ public class 有序矩阵中第k小的元素_lc_378 {
         return pq.poll()[0];
     }
 
-    /**二分法
+    /**双重二分法
      * 数组左上角为最小值，右下角为最大值。
      * 选定这两个值为左右边界，二分查找第k小的数值。
      *
@@ -54,6 +54,14 @@ public class 有序矩阵中第k小的元素_lc_378 {
         return left;
     }
 
+    /**
+     * z形搜索，从左下角开始，统计大于mid的数量
+     * @param matrix
+     * @param n
+     * @param k
+     * @param mid
+     * @return
+     */
     private boolean check(int[][] matrix, int n, int k, int mid) {
         int i = n-1;
         int j = 0;
