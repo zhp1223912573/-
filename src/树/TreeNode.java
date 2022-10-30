@@ -7,8 +7,8 @@ package 树;
 public class TreeNode {
 
         int val;
-        树.TreeNode left;
-        树.TreeNode right;
+        TreeNode left;
+        TreeNode right;
         TreeNode() {}
         TreeNode(int val) { this.val = val; }
         TreeNode(int val, 树.TreeNode left, 树.TreeNode right) {
