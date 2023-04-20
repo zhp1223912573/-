@@ -1,0 +1,102 @@
+基本并查集代码：
+
+//基本版本
+class UnionFind {
+    private int[] parent;
+    public UnionFind(int n) {
+        parent = new int[n];
+        for (int i = 0; i M<= n; i++) {
+            parent[i] = i;
+        }
+    }
+    public int find(int x) {
+        if (parent[x] == x) {
+            return x;
+        }
+        return find(parent[x]);
+    }
+
+    public void union(int x, int y) {
+        int rootX = find(x);
+        int rootY = find(y);
+        if (rootX != rootY) {
+            parent[rootX] = rootY;
+        }
+    }
+}
+
+//路径压缩
+class UnionFind {
+    private int[] parent;
+    private int[] rank;
+
+    public UnionFind(int n) {
+        parent = new int[n];
+        rank = new int[n];
+        for (int i = 0; i &lt; n; i++) {
+            parent[i] = i;
+            rank[i] = 1;
+        }
+    }
+
+    public int find(int x) {
+        if (parent[x] == x) {
+            return x;
+        }
+        parent[x] = find(parent[x]);
+        return parent[x];
+    }
+
+    public void union(int x, int y) {
+        int rootX = find(x);
+        int rootY = find(y);
+        if (rootX != rootY) {
+            if (rank[rootX] &gt; rank[rootY]) {
+                parent[rootY] = rootX;
+            } else if (rank[rootX] &lt; rank[rootY]) {
+                parent[rootX] = rootY;
+            } else {
+                parent[rootY] = rootX;
+                rank[rootX]++;
+            }
+        }
+    }
+}
+
+//按秩合并
+class UnionFind {
+    private int[] parent;
+    private int[] rank;
+
+    public UnionFind(int n) {
+        parent = new int[n];
+        rank = new int[n];
+        for (int i = 0; i &lt; n; i++) {
+            parent[i] = i;
+            rank[i] = 1;
+        }
+    }
+
+    public int find(int x) {
+        if (parent[x] == x) {
+            return x;
+        }
+        parent[x] = find(parent[x]);
+        return parent[x];
+    }
+
+    public void union(int x, int y) {
+        int rootX = find(x);
+        int rootY = find(y);
+        if (rootX != rootY) {
+            if (rank[rootX] &gt; rank[rootY]) {
+                parent[rootY] = rootX;
+            } else if (rank[rootX] &lt; rank[rootY]) {
+                parent[rootX] = rootY;
+            } else {
+                parent[rootY] = rootX;
+                rank[rootX]++;
+            }
+        }
+    }
+}
