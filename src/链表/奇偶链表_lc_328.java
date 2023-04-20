@@ -8,7 +8,7 @@ package 链表;
  */
 public class 奇偶链表_lc_328 {
     /**
-     * 双指针
+     * 数组.双指针
      * 奇偶指针，先链接一个奇结点，再链接一个偶结点，
      * 最后将两个结点拼接
      */
@@ -57,7 +57,7 @@ public class 奇偶链表_lc_328 {
         ListNode evenHead = head.next;
 
         while(even!=null&&even.next!=null){
-            odd = even.next;
+            odd.next = even.next;
             odd = odd.next;
             even.next= odd.next;
             even = even.next;

@@ -78,6 +78,49 @@ public class 无重复字符的最长字串_lc_3 {
         }
         return ans;
     }
+
+
+    /**
+     * 使用map表示以当前字符结尾时，最长的字符串长度
+     * 加入当前字符后，需要找出当前字符的上一次出现位置，
+     * 以及当前字符的前一个字符结尾时的最长子字符串的长度，得到与该字符串重复的字符的位置
+     * 比较上述的两个字符位置，根据较大的位置设置当前新子字符串的位置。
+     */
+    public int lengthOfLongestSubstring2(String str) {
+        if(str==null || str.length()<1){
+            return 0;
+        }
+
+        char[] chars = str.toCharArray();
+        Map<Character,Integer> map = new HashMap<>();
+        //设置一个数组映射字符的上一次出现位置
+
+        for(int i=0;i<chars.length;i++){
+            map.put(chars[i],-1) ;
+        }
+        int pre = -1;//
+        int cur = 0;//当前长度
+        int len = 0;//最大长度
+        for(int i=0;i<chars.length;i++){
+            pre = Math.max(pre,map.get(chars[i]));//当前字符上一次出现的位置
+            cur = i-pre;//计算以当前字符结尾时的最大长度
+            len = Math.max(len,cur);
+            map.put(chars[i],i);//更新位置
+        }
+        return len;
+    }
+
+
+    public int lengthOfLongestSubstring3(String str) {
+        boolean occ[] = new boolean[128];
+        int res = 0;
+        for(int l=0,r=0;r<str.length();r++){
+            while(l<=r&&occ[str.charAt(r)]) occ[str.charAt(l++)]=false;
+            occ[str.charAt(r)]=true;
+            res = Math.max(res,r-l+1);
+        }
+        return res;
+    }
     public static void main(String[] args) {
         System.out.println(lengthOfLongestSubstring("au"));
     }

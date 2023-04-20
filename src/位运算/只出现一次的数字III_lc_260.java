@@ -6,6 +6,24 @@ package 位运算;
  * https://leetcode.cn/problems/single-number-iii/
  */
 public class 只出现一次的数字III_lc_260 {
+
+    public static void main(String[] args) {
+        int a = 2;
+        for(int i=31;i>=0;i--){
+            System.out.print(a&(1<<i));
+        }
+
+        System.out.println();
+        int b = (-a);
+        System.out.println(b);
+        for(int i=31;i>=0;i--){
+            System.out.print(b&(1<<i));
+        }
+
+        System.out.println();
+
+    }
+
     /**
      * 位运算
      *整个数组异或得到num，num位a^b；

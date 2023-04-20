@@ -5,7 +5,8 @@ package 树;
  * @date 2021-11-22 12:22
  * 二叉树节点个数求解
  */
-public class 二叉树节点个数_lc_222 {
+public class
+二叉树节点个数_lc_222 {
 
     /**
      * 下述是求解普通二叉树节点个数的思路
@@ -61,7 +62,7 @@ public class 二叉树节点个数_lc_222 {
         //若上述递归求解得到的节点深度一致 说明当前root节点为一棵二叉树
         //可以直接使用2^深度 来得到节点总数 并返回
         if(leftnum==rightnum){
-            return (2<<leftnum)-1;
+            return (1<<leftnum+1)-1;
         }
 
         //若目前的root节点树不是一棵满二叉树 直接递归求解其左右子节点 去寻找满二叉树
@@ -132,5 +133,48 @@ public class 二叉树节点个数_lc_222 {
             root = root.left;
         }
         return level;
+    }
+
+
+    /**
+     * 基于二分和位运算实现的完全二叉树节点个数查找
+     * 时间开销为O(log^2n)
+     * @param root
+     * @return
+     */
+    public int countNodes(TreeNode root) {
+        if(root==null) return 0;
+        TreeNode node = root;
+        int level = 0;
+        while(node.left!=null){
+            node = node.left;
+            level++;
+        }
+
+        int left = 1<<level;
+        int right = (1<<(level+1))-1;
+        while(left<right){
+            int mid = (right-left+1)/2+left;
+            if(check(root,level,mid)){
+                left = mid;
+            }else{
+                right = mid-1;
+            }
+        }
+        return left;
+    }
+
+    public boolean check(TreeNode root,int level,int k){
+
+        int bits = 1<<(level-1);
+        while(root!=null&&bits>0){
+            if((bits&k)==0){
+                root = root.left;
+            }else{
+                root = root.right;
+            }
+            bits>>=1;
+        }
+        return root!=null;
     }
 }

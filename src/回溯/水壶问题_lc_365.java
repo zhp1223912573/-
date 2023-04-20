@@ -56,6 +56,12 @@ public class 水壶问题_lc_365 {
         return arr[0]*100001+arr[1];
     }
 
+    /**
+     * 贝祖定律
+     * ax+by=gcb(a,b)
+     * 若a，b不全为0，存在整数x，y使上式成立。
+     *
+     */
     class Solution {
         public boolean canMeasureWater(int x, int y, int z) {
             if (x + y < z) {
@@ -64,6 +70,7 @@ public class 水壶问题_lc_365 {
             if (x == 0 || y == 0) {
                 return z == 0 || x + y == z;
             }
+            //若z是x，y的最大公因数的倍数，那么成立
             return z % gcd(x, y) == 0;
         }
 
@@ -75,6 +82,10 @@ public class 水壶问题_lc_365 {
                 remainder = x % y;
             }
             return y;
+        }
+
+        public int gcb(int x,int y){
+            return y==0?x : gcb(y,x%y);
         }
     }
 

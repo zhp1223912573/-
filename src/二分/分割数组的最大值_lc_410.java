@@ -87,6 +87,36 @@ public class 分割数组的最大值_lc_410 {
         return cnt <= m;
     }
 
+    /**
+     * 二分
+     * @param nums
+     * @param k
+     * @return
+     */
+    public int splitArray2(int[] nums, int k) {
+        int l =0,r=(int)1e9;
+        while(l<r){
+            int mid = (r-l)/2+l;
+            if(check1(nums,k,mid)) r = mid;
+            else l=mid+1;
+        }
+        return r;
+    }
+    boolean check1(int nums[],int k,int mid){
+        int cnt = 1;
+        int cur = 0;
+        for(int num:nums){
+            if(num+cur<=mid){
+                cur+=num;
+            }else{
+                if(num>mid) return false;
+                cnt++;
+                cur = num;
+            }
+        }
+        return cnt<=k;
+
+    }
 
     public static void main(String[] args) {
         int arr[] ={7,2,5,10,8};

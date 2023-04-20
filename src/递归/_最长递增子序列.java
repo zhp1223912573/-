@@ -1,8 +1,12 @@
 package 递归;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author zhp
- * @date 2022-07-06 21:09
+ *@date 2022-07-06 21:09
+ * https://leetcode.cn/problems/longest-increasing-subsequence/
  */
 public class _最长递增子序列 {
     /**dp
@@ -78,5 +82,28 @@ public class _最长递增子序列 {
             }
         }
         return len;
+    }
+
+    /**
+     *使用list维护一个递增子序列，将加入list，并始终保持递增，
+     * 最后计算list个数，就是最长递增子序列的长度。
+     */
+    public int lengthOfLIS1(int[] nums) {
+        List<Integer> list = new ArrayList<>();
+        for(int num:nums){
+            int l=0;
+            int r = list.size();
+            while(l<r){
+                int mid = (r-l)/2+l;
+                if(list.get(mid)>=num){
+                    r = mid;
+                }else{
+                    l = mid+1;
+                }
+            }
+            if(r==list.size()) list.add(num);
+            else list.set(r,num);
+        }
+        return list.size();
     }
 }

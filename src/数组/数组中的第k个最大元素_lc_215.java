@@ -63,7 +63,6 @@ public class 数组中的第k个最大元素_lc_215 {
 
             /**新的快排代码（相比于之前的，更简洁，更好理解）
              */
-
             swap(nums,randomIndex,low);//将随机选择的pivot放置在区间的第一个元素
             int pivot = nums[low];//得到该标兵数
             int index = low;
@@ -132,6 +131,6 @@ public class 数组中的第k个最大元素_lc_215 {
     public static void main(String[] args) {
         int arrs[] ={3,2,1,5,6,4};
         数组中的第k个最大元素_lc_215 t = new 数组中的第k个最大元素_lc_215();
-        System.out.println(t.findKthLargest(arrs,6));
+        System.out.println(t.findKthLargest(arrs,2));
     }
 }

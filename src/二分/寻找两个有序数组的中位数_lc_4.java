@@ -6,6 +6,7 @@ package 二分;
  * https://leetcode.cn/problems/median-of-two-sorted-arrays/solution/xun-zhao-liang-ge-you-xu-shu-zu-de-zhong-wei-s-114/
  */
 public class 寻找两个有序数组的中位数_lc_4 {
+
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int length1 = nums1.length, length2 = nums2.length;
         int totalLength = length1 + length2;

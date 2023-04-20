@@ -89,4 +89,41 @@ public class 填充每一个节点的下一个右侧节点_lc_117 {
 
         last = node ;//指向当前node，
     }
+
+
+    /**
+     * 将整棵数视为多层级链表，
+     * 为每一层级链表设置一个dummy虚拟头结点，
+     * 当遍历当前层级节点时，设置下一层级的dummy虚拟头结点，遍历当前层级节点的同时，串联下一层机节点。
+     * @param root
+     * @return
+     */
+    public Node connect3(Node root) {
+        if(root==null) return null;
+
+        Node cur = root;
+        //最外层为每层链表的循环
+        while(cur!=null){
+            Node dummy = new Node();
+            Node pre = dummy;
+            //该层循环为当前层的所有节点遍历
+            while(cur!=null){
+                //根据当前节点的左右节点是否存在来判断是否进行连接操作
+                if(cur.left!=null){
+                    pre.next = cur.left;
+                    pre = pre.next;
+                }
+                if(cur.right!=null){
+                    pre.next = cur.right;
+                    pre = pre.next;
+                }
+                //移动到当前层链表的下一个节点
+                cur = cur.next;
+            }
+            //移动到当前层的下一层链表的头部
+            cur = dummy.next;
+        }
+
+        return root;
+    }
 }

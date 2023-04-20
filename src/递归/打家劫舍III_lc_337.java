@@ -95,4 +95,26 @@ public class 打家劫舍III_lc_337 {
             res[1] = Math.max(left[0],left[1])+Math.max(right[0],right[1]);
             return res;
         }
+
+
+    public int rob4(TreeNode root) {
+        return dfs(root);
+    }
+
+    Map<TreeNode,Integer> map = new HashMap<>();
+    public int dfs(TreeNode root){
+        if(root==null) return 0;
+        int choose = root.val;
+        if(map.containsKey(root)) return map.get(root);
+        if(root.left!=null){
+            choose+=dfs(root.left.left)+dfs(root.left.right);
+        }
+        if(root.right!=null){
+            choose+=dfs(root.right.left)+dfs(root.right.right);
+        }
+        int nochoose = dfs(root.left)+dfs(root.right);
+        int value = Math.max(choose,nochoose);
+        map.put(root,value);
+        return value;
+    }
 }

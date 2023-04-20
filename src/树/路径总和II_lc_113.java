@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @author zhp
  * @date 2022-10-23 3:51
- * https://leetcode.cn/problems/path-sum/submissions/
+ * https://leetcode.cn/problems/path-sum-ii/
  */
 public class 路径总和II_lc_113 {
 
@@ -24,10 +24,12 @@ public class 路径总和II_lc_113 {
     public void getAllPath(TreeNode root,int target,List<Integer>path){
         if(root==null) return;
 
+        //添加当前节点
         path.add(root.val);
         if((target-root.val)==0&&root.left==null&&root.right==null) ans.add(new ArrayList(path));
         getAllPath(root.left,target-root.val,path);
         getAllPath(root.right,target-root.val,path);
+        //移除当前节点
         path.remove(path.size()-1);
     }
 }

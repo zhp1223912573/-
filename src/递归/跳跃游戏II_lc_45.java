@@ -1,4 +1,4 @@
-package 回溯;
+package 递归;
 
 /**
  * @author zhp
@@ -6,12 +6,35 @@ package 回溯;
  * https://leetcode.cn/problems/jump-game-ii/solution/tiao-yue-you-xi-ii-by-leetcode-solution/
  */
 public class 跳跃游戏II_lc_45 {
+
+    /**
+     * 记搜
+     * @param nums
+     * @return
+     */
+    public int jump4(int[] nums) {
+        dp = new int[nums.length];
+        return dfs(0,nums);
+    }
+    int dp[] ;
+    public int dfs(int index,int nums[]){
+        if(index>=nums.length-1){
+            return 0;
+        }
+        int ans = 1000010;
+        if(dp[index]!=0) return dp[index];
+        for(int i=1;i<=nums[index];i++){
+            ans = Math.min(dfs(index+i,nums)+1,ans);
+        }
+
+        return dp[index] = ans;
+    }
     /**
      * dp
      * 定义：
      *      dp[i]表示从i到达最后一个位置所需的最小步数
      * 初始情况：
-     *      dp内全部距离未MAX_VALUE,方便取最小值。
+     *      dp内全部距离为MAX_VALUE,方便取最小值。
      *可能性分析：
      *      为了得到起始位置到最后一个位置的最少步数，也就是求dp[0]，
      *      需要从后往前得到每个位置到达最后位置的解，最终才能得到dp[0]
@@ -65,5 +88,25 @@ public class 跳跃游戏II_lc_45 {
         return step;
     }
 
+    /**
+     * 遍历当前位置所能跳到的最远位置，当到达当前轮次的边界时，
+     * 更新最远位置，知道最后一个位置前一位置。
+     * @param nums
+     * @return
+     */
+    public int jump2(int[] nums) {
+        int n = nums.length;
+        int maxpostion = 0;
+        int end = 0;
+        int steps = 0;
+        for(int i=0;i<n-1;i++){
+            maxpostion = Math.max(maxpostion,i+nums[i]);
+            if(end==i){
+                end = maxpostion;
+                steps++;
+            }
+        }
 
+        return steps;
+    }
 }

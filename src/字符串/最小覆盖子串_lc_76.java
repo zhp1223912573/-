@@ -50,7 +50,6 @@ public class 最小覆盖子串_lc_76 {
 
         return ansl ==-1?"":s.substring(ansl,ansr);
     }
-
     private boolean check() {
         Iterator<Map.Entry<Character, Integer>> iterator =ori.entrySet().iterator();
         while(iterator.hasNext()){
@@ -62,5 +61,38 @@ public class 最小覆盖子串_lc_76 {
             }
         }
         return true;
+    }
+
+
+    class solution{
+        int sc[] = new int[128];
+        int tc[] = new int[128];
+        public String minWindow(String s, String t) {
+            for(char ch:t.toCharArray()){
+                tc[ch] ++;
+            }
+            int minLen = 1000010;
+            int start = -1;
+            char cs[] = s.toCharArray();
+            for(int l=0,r=0;r<cs.length;r++){
+                sc[cs[r]]++;
+                while(l<=r&&check()) {
+                    if(minLen>r-l+1){
+                        minLen = r-l+1;
+                        start = l;
+                    }
+                    sc[cs[l++]]--;
+                }
+            }
+            return start==-1?"":s.substring(start,start+minLen);
+        }
+
+        boolean check(){
+            for(int i=0;i<128;i++){
+                if(tc[i]>sc[i]) return false;
+
+            }
+            return true;
+        }
     }
 }

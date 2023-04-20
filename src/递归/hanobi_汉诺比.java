@@ -30,7 +30,7 @@ public class hanobi_汉诺比 {
     private static void fun(int n,String start,String end,String other) {
 
         List<Integer> a = new ArrayList<>();
-        a.remove(a.size());
+//        a.remove(a.size());
         if(n==1)    {
             System.out.println("移动盘子"+n+" from:"+start+" to:"+end);
         }else{

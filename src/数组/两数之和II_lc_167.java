@@ -30,7 +30,7 @@ public class 两数之和II_lc_167 {
     }
 
     /**
-     * 双指针
+     * 数组.双指针
      * 数组有效，直接双指针缩小，直到找到答案
      * @param numbers
      * @param target

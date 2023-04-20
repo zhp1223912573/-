@@ -124,7 +124,7 @@ public class 相交链表_lc_160 {
      *
      * 如果 m !=n，
      * 则由于两个链表没有公共节点，两个指针也不会同时到达两个链表的尾节点，因此两个指针都会遍历完两个链表，
-     * 在指针 pA 移动了 m+nm+n 次、指针 pB 移动了 n+mn+m 次之后，两个指针会同时变成空值 null，此时返回 null。
+     * 在指针 pA 移动了 m+n 次、指针 pB 移动了 n+m 次之后，两个指针会同时变成空值 null，此时返回 null。
      *
      * 作者：LeetCode-Solution
      * 链接：https://leetcode.cn/problems/intersection-of-two-linked-lists-lcci/solution/lian-biao-xiang-jiao-by-leetcode-solutio-2kne/

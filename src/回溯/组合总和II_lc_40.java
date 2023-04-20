@@ -1,8 +1,6 @@
 package 回溯;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author zhp
@@ -47,5 +45,37 @@ public class 组合总和II_lc_40 {
             visited[i]= false;
 
         }
+    }
+
+    /**
+     * 通过set实现去重操作
+     * @param ans
+     * @param path
+     * @param candidates
+     * @param start
+     * @param target
+     */
+    void back(List<List<Integer>> ans, List<Integer> path,int [] candidates,int start,int target){
+        if(target==0){
+            ans.add(new ArrayList(path));
+        }
+
+        Set<Integer> occ = new HashSet<>();
+        for(int i=start;i<candidates.length;i++){
+            if(target<candidates[i]) return;
+            if(occ.contains(candidates[i])){
+                continue;
+            }
+            occ.add(candidates[i]);
+
+            path.add(candidates[i]);
+            //此处是+1,因为我们不是使用数组记录每个位置是否已经被使用，
+            //set的作用是记录当前层中是否已经存在重复元素，存在的话说明已经出现该数值开头的其他组合
+            // 不应当重复使用，直接跳过
+            back(ans,path,candidates,i+1,target-candidates[i]);
+
+            path.remove(path.size()-1);
+        }
+
     }
 }

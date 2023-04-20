@@ -22,10 +22,13 @@ public class 字符串转数字_lc_8 {
         int index = 0;//遍历字符串所有字符
 
         //1.取出前导空格
-        while(chars[index]==' '){
+        while(index<len&&chars[index]==' '){
             index++;
         }
-
+        //到达末尾直接返回
+        if(index==len){
+            return 0;
+        }
         int sign = 1;
         //2.判断符号
         if(chars[index]=='+'){

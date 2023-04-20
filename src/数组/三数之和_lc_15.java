@@ -1,4 +1,4 @@
-package 位运算;
+package 数组;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class 三数之和_lc_15 {
     /**
-     * 双指针+排序
+     * 数组.双指针+排序
      * 由于要求不能包含重复的三元组，所以排序之后需要在出现相同数字之后进行跳过，避免元组的重复加入
      * @param nums
      * @return
@@ -38,7 +38,7 @@ public class 三数之和_lc_15 {
                     while(L<R&&nums[L+1]==nums[L]) L++;
                     while(L<R&&nums[R]==nums[R-1]) R++;
                     L++;
-                     R--;
+                    R--;
                 }else if(cur<0){
                     L++;
                 }else{

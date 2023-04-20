@@ -12,6 +12,23 @@ import java.util.PriorityQueue;
  */
 public class 排序链表_lc_148 {
 
+    public static void main(String[] args) {
+
+        //在上一行代码执行完以后，字符串常量池中并没有"ab"
+		/*
+		1、jdk6中：在字符串常量池（此时在永久代）中创建一个字符串"ab"
+        2、jdk8中：字符串常量池（此时在堆中）中没有创建字符串"ab",而是创建一个引用，指向new String("ab")，		  将此引用返回
+        3、详解看上面
+		*/
+        String x = "ab";
+        String s = new String("a") + new String("b");//new String("ab")
+
+        String s2 = s.intern();
+
+        System.out.println(s2 == "ab");//jdk6:true  jdk8:true
+        System.out.println(s == "ab");//jdk6:false  jdk8:false
+    }
+
     /**优先队列
      * 借助额外数据结构并使用n级别的额外空间
      * @param head
@@ -48,13 +65,16 @@ public class 排序链表_lc_148 {
         }
 
         public    ListNode sortList(   ListNode head,    ListNode tail) {
+            //为空直接返回null
             if (head == null) {
                 return head;
             }
+            //只剩下当前节点，断开和后续节点的连接，返回当前节点
             if (head.next == tail) {
                 head.next = null;
                 return head;
             }
+            //快慢指针找中间节点
                ListNode slow = head, fast = head;
             while (fast != tail) {
                 slow = slow.next;
@@ -64,9 +84,12 @@ public class 排序链表_lc_148 {
                 }
             }
                ListNode mid = slow;
+            //分
                ListNode list1 = sortList(head, mid);
                ListNode list2 = sortList(mid, tail);
+               //合
                ListNode sorted = merge(list1, list2);
+
             return sorted;
         }
 

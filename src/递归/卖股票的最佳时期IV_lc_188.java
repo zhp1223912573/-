@@ -1,5 +1,7 @@
 package 递归;
 
+import java.util.Arrays;
+
 /**
  * @author zhp
  * @date 2022-09-07 13:54
@@ -19,6 +21,38 @@ package 递归;
  *      总结规律，奇数次是买入，偶数次是卖出（除了第0次）
  */
 public class 卖股票的最佳时期IV_lc_188 {
+    /**
+     * 记搜
+     * @param k
+     * @param prices
+     * @return
+     */
+    public int maxProfit2(int k, int[] prices) {
+        dp = new int[prices.length][2*k+1];
+        len = 2*k+1;
+        for(int i=0;i<prices.length;i++){
+            Arrays.fill(dp[i],-1);
+        }
+        return dfs(prices,0,0);
+    }
+    int dp[][];
+    int len;
+    public int dfs(int[] prices,int index,int status){
+        if(index==prices.length || status==len) return 0;
+        if(dp[index][status]!=-1) return dp[index][status];
+        if(status%2==0){
+            return dp[index][status]=Math.max(dfs(prices,index+1,status),dfs(prices,index+1,status+1)-prices[index]);
+        }else{
+            return dp[index][status]=Math.max(dfs(prices,index+1,status),dfs(prices,index+1,status+1)+prices[index]);
+        }
+    }
+
+    /**
+     * dp
+     * @param k
+     * @param prices
+     * @return
+     */
     public int maxProfit(int k, int[] prices) {
         if(prices==null||prices.length<=1) return 0;
         int len = prices.length;

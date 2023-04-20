@@ -1,4 +1,4 @@
-package 双指针;
+package 数组.双指针;
 
 /**
  * @author zhp
@@ -9,7 +9,7 @@ package 双指针;
  */
 public class 移除元素_lc_27 {
     /**
-     *双指针
+     *数组.双指针
      */
     public static int removeElement(int[] nums, int val) {
         if(nums==null){

@@ -89,4 +89,36 @@ public class 全排列II_lc_47 {
             ch[b] = temp;
         }
     }
+
+
+    /**
+     * 通过set进行去重操作
+     * @param nums
+     * @return
+     */
+    public List<List<Integer>> permuteUnique1(int[] nums) {
+        List<List<Integer>> ans = new ArrayList<>();
+        dfs(nums,new ArrayList<Integer>(),ans,new boolean[nums.length]);
+        return ans;
+    }
+
+
+    void dfs(int []nums,List<Integer> path,List<List<Integer>> ans,boolean used[]){
+        if(path.size()==nums.length){
+            ans.add(new ArrayList(path));
+            return;
+        }
+
+        Set<Integer> set = new HashSet<>();
+        for(int i=0;i<nums.length;i++){
+
+            if(set.contains(nums[i])||used[i]) continue;
+            set.add(nums[i]);
+            used[i] = true;
+            path.add(nums[i]);
+            dfs(nums,path,ans,used);
+            used[i] = false;
+            path.remove(path.size()-1);
+        }
+    }
 }

@@ -53,7 +53,7 @@ public class 二叉树遍历总结 {
         Stack<TreeNode> stack=new Stack<>();
 
         stack.push(root);
-        //先放入右子节点 再放入左子节点 保证先弹出左子节点 实现先序
+        //先放入右子节点 再放入左子节点 保证先弹出左子节点 实  现先序
         while(!stack.empty()){
            TreeNode node=stack.pop();
             list.add(node.val);

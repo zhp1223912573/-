@@ -1,5 +1,9 @@
 package 回溯;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author zhp
  * @date 2022-06-13 13:46
@@ -107,22 +111,69 @@ public class n皇后 {
         return res;
     }
 
+    /**
+     * 与方法1的区别在于，方法1通过检验函数去循环检验当前放置方式是否可行，不可行则退出。
+     * 而当前方法通过booleam数组，记录对应列号，斜线，反斜线号来标注是否可以放置，
+     * 通过空间换取时间。
+     * @param n
+     * @return
+     */
+    public List<List<String>> solveNQueens(int n) {
+        ArrayList<List<String>> ans = new ArrayList<>();
+        dfs(0,new boolean[n],new boolean [30],new boolean[40],n,new int[n],ans);
+        return ans;
+    }
+
+    void dfs(int row,boolean col[],boolean d1[],boolean d2[],int n,int queen[],List<List<String>> ans){
+        if(row==n){
+            ans.add(generate(queen));
+            return;
+        }
+
+        for(int i=0;i<n;i++){
+            //当前位置与对应列或者斜线，反斜线冲突，重新选取列位置。
+            if(col[i] || d1[i+row] || d2[i-row+9]) continue;
+            queen[row] = i;
+            col[i] = d1[i+row] = d2[i-row+9] = true;
+            dfs(row+1,col,d1,d2,n,queen,ans);
+            col[i] = d1[i+row] = d2[i-row+9] = false;
+        }
+    }
+
+    public List<String> generate(int queens[]){
+        List<String> ans = new ArrayList();
+        for(int i=0;i<queens.length;i++){
+            char []row = new char[queens.length];
+            Arrays.fill(row,'.');
+            row[queens[i]]='Q';
+            ans.add(new String(row));
+        }
+        return ans;
+    }
+
 
     public static void main(String[] args) {
-        int  n =15;
+        int a = 4;
+        System.out.println(~a+1);
+        System.out.println(-a);
 
-
-        long start = System.currentTimeMillis();
-        System.out.println(num2(n));
-        long end = System.currentTimeMillis();
-        System.out.println("计算时间"+(end- start)+"ms");
-
-
-         start = System.currentTimeMillis();
-
-        System.out.println(num1(n));
-         end = System.currentTimeMillis();
-        System.out.println("计算时间"+(end- start)+"ms");
+        int b = -4;
+        System.out.println(~b+1);
+        System.out.println(-b);
+//        int  n =4;
+//
+//
+//        long start = System.currentTimeMillis();
+//        System.out.println(num2(n));
+//        long end = System.currentTimeMillis();
+//        System.out.println("计算时间"+(end- start)+"ms");
+//
+//
+//         start = System.currentTimeMillis();
+//
+//        System.out.println(num1(n));
+//         end = System.currentTimeMillis();
+//        System.out.println("计算时间"+(end- start)+"ms");
 
     }
 }

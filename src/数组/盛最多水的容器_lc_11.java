@@ -20,7 +20,7 @@ public class 盛最多水的容器_lc_11 {
     }
 
     /**
-     * 双指针
+     * 数组.双指针
      * 本题是经典的双指针问题，但是一开始不一定能想到双指针方法解题。
      * 盛水的容量=左右边界的较小值*左右边界差值绝对值，
      *为了使盛水量尽可能大，需要的边界值较大，所以双指针指向数组首尾，
@@ -30,7 +30,7 @@ public class 盛最多水的容器_lc_11 {
      */
     public int maxArea1(int[] height) {
         int left = 0;
-        int right = height.length;
+        int right = height.length-1;
         int max = 0;
         while(left<right){
             max = Math.max(Math.min(height[left],height[right])*(right-left),max);

@@ -22,6 +22,7 @@ public class 括号生成_lc_22 {
         return ans;
 
     }
+
     public void generate(char[] chars,int pos,List<String> ans){
             if(pos==chars.length){
                 if(isValid(chars)) {
@@ -35,6 +36,7 @@ public class 括号生成_lc_22 {
                 generate(chars,pos+1,ans);
             }
     }
+
     private boolean isValid(char[] chars) {
         int balance = 0;
         for(char ch : chars){

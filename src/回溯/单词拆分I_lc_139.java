@@ -26,8 +26,8 @@ public class 单词拆分I_lc_139 {
      *      ["a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"]
      * 因为尾端的b不存在于wordDict中的任一单词内，但是前面一长串的a又与字典内单词匹配，
      * 所以，不加记忆搜索回导致频繁对同一结果重复计算，起始在第一轮搜索过程中，仅仅有一个单词"a",
-     * 就可以匹配原始字符s到倒数第2个字符，但是因为最后一个匹配失败，又要从头开始，
-     * 并从第二个单词"aa"进行匹配，其实在第一轮搜索中，根据'a'的匹配，我们可以使用数组visited记录下表为i的
+     * 就可以匹配原始字符s到倒数第2个字符，但是因为最后一个匹配失败，又要从头开始，并从第二个单词"aa"进行匹配。
+     * 其实在第一轮搜索中，根据'a'的匹配，我们可以使用数组visited记录下标为i的
      * 字符串已经可以有单词表中单词匹配，避免重复计算。
      * 所以这里使用一个整型visited数组，默认情况为0，表示当前位置没有被匹配过，而1表示成功匹配，
      * 2表示无法被匹配，此时应该回退到上一步，尝试别的单词。
@@ -73,7 +73,32 @@ public class 单词拆分I_lc_139 {
         return  false;
     }
 
-
+    /**
+     * 记搜
+     * dp[i]=0未设置
+     * dp[i]=1可以生成
+     * dp[i]=-1不能生成
+     * @param s
+     * @param wordDict
+     * @return
+     */
+    public boolean wordBreak3(String s, List<String> wordDict) {
+        dp = new int[s.length()];
+        return dfs(0,s,wordDict)==1;
+    }
+    int dp[] ;
+    public int dfs(int index,String s,List<String> wordDict){
+        if(index>=s.length()){
+            return 1;
+        }
+        if(dp[index]!=0) return dp[index];
+        for(int i=index+1;i<=s.length();i++){
+            if(wordDict.contains(s.substring(index,i))&&dfs(i,s,wordDict)==1){
+                return dp[index] = 1;
+            }
+        }
+        return dp[index]=-1;
+    }
     /**
      * 动规
      * 将字符串s分为0-j，j-i，i-length的三部分理解，

@@ -61,7 +61,7 @@ public class 单词搜索_lc_212 {
             if(trie.children[board[i][j]-'a']==null){
                 return ;
             }
-        trie = trie.children[board[i][j]-'a'];
+           trie = trie.children[board[i][j]-'a'];
             if(trie.isEnd){
                     set.add(trie.word);
             }

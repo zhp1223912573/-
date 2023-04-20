@@ -84,4 +84,32 @@ public class 在排序数组中查找元素的第一个和最后一个位置_lc_
         }
         return num[left]>target?left:m;
     }
+
+    /**
+     * 扎到大于等于target的最小值位置，即元素第一个位置
+     * 找到小于等于target的最大值位置，即元素最后一个位置
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int[] searchRange3(int[] nums, int target) {
+        if(nums.length==0 ) return new int[]{-1,-1};
+        int l =0;
+        int r =nums.length-1;
+        while(l<r){
+            int mid = (r-l)/2+l;
+            if(nums[mid]>=target) r = mid;
+            else l =mid+1;
+        }
+        if(nums[l]!=target) return new int[]{-1,-1};
+        int first = l;
+        l=0;
+        r=nums.length-1;
+        while(l<r){
+            int mid = (r-l+1)/2+l;
+            if(nums[mid]<=target) l = mid;
+            else r = mid-1;
+        }
+        return new int[] {first,l};
+    }
 }

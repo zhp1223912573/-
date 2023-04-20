@@ -82,7 +82,7 @@ public class 删除无效的括号_lc_301 {
 
     /**广搜
      * 题目要求找出字符串s的最少删除字符下的有效字符串的答案组和，这与广搜的思路不谋而和，
-     *   通过尝试对出现过的括号进行删除，在最少的伦次下得到的有效字符串就是最小的删除次数的有效字符串组合。
+     *   通过尝试对出现过的括号进行删除，在最少的轮次下得到的有效字符串就是最小的删除次数的有效字符串组合。
      */
     public List<String> removeInvalidParentheses1(String s){
         List<String> ans = new ArrayList<>();

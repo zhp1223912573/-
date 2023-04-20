@@ -2,6 +2,7 @@ package 回溯;
 
 import shiyan.In;
 
+import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,8 @@ import java.util.List;
  * https://leetcode.cn/problems/subsets/
  */
 public class 子集_lc_78 {
+
+
 
     /**回溯
      * 尝试取和不取当前位置的数值，到达最后时的路径就是我们要的结果。
@@ -61,6 +64,23 @@ public class 子集_lc_78 {
             ans.add(path);
         }
         return ans;
+    }
+
+    /**
+     * 不用考虑加与不加，直接从头到尾依次考虑即可
+     * @param ans
+     * @param path
+     * @param index
+     * @param nums
+     */
+    public void backTract1(List<List<Integer>> ans,List<Integer> path,int index,int nums[]){
+        ans.add(new ArrayList(path));
+        for(int i=index;i<nums.length;i++){
+            path.add(nums[i]);
+            backTract1(ans,path,i+1,nums);
+            path.remove(path.size()-1);
+        }
+
     }
 }
 

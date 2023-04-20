@@ -27,6 +27,7 @@ import java.util.Set;
  */
 public class ms01_01_判断字符是否唯一 {
     public boolean isUnique(String astr) {
+
         int num = 0;
         for(int i=0;i<astr.length();i++){
             int index = (1<<(astr.charAt(i)-'a'));

@@ -14,7 +14,7 @@ import java.util.Map;
 public class 重构二叉树_lc_206 {
     /**
      * 利用中序和先序 还是中序和后序来还原一颗树 本质上都是一样的
-     * 利用先序 后序第一个 最后一个节点为根节点的特性对中序数组进行切割
+     * 利用先序第一个，后序最后一个节点为根节点的特性对中序数组进行切割
      * 只有在递归过程中的选择的数组坐标不一致 其他基本相符
      */
     //利用下述结构可以不必在递归过程中传递数组 减少了额外开销
@@ -30,9 +30,6 @@ public class 重构二叉树_lc_206 {
         TreeNode node = rebuild(0,inorder.length-1,0,postorder.length-1);
         return node;
     }
-
-
-
 
     /**中序 后序
      * https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/solution/tu-jie-gou-zao-er-cha-shu-wei-wan-dai-xu-by-user72/
@@ -67,7 +64,6 @@ public class 重构二叉树_lc_206 {
      * @param endp
      * @return
      */
-
     public  TreeNode rebuidlI(int starti,int endi,int startp,int endp){
         //不继续递归
         if(starti>endi || startp>endp) return null;
@@ -83,6 +79,8 @@ public class 重构二叉树_lc_206 {
 
         return root;
     }
+
+
     public TreeNode rebuild(int starti,int endi,int startp,int endp){
         if(startp>endp){
             return null;

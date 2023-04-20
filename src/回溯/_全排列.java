@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author zhp
  * @date 2022-06-13 15:57
  */
-public class _全排列 {
+public class  _全排列 {
     public static ArrayList<String> Permutation(String str){
         ArrayList<String> res = new ArrayList<>();
         if(str == null || str.length()==0){

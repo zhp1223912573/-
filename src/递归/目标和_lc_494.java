@@ -2,6 +2,8 @@ package 递归;
 
 import sun.util.resources.nl.CalendarData_nl;
 
+import java.util.Arrays;
+
 /**
  * @author zhp
  * @date 2022-07-19 22:09
@@ -107,6 +109,82 @@ public class 目标和_lc_494 {
         }
         return dp[n][m];
 
+    }
+
+
+    /**
+     * 记搜
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int findTargetSumWays3(int[] nums, int target) {
+        dp = new int[nums.length][2010];
+        for(int i=0;i<nums.length;i++){
+            Arrays.fill(dp[i],-1);
+        }
+        return dfs1(nums,0,target,0);
+    }
+
+    int dp[][];
+    public int dfs1(int nums[],int sum,int target,int index){
+        if(index==nums.length){
+            return target==sum?1:0;
+        }
+        if(dp[index][sum+1000]!=-1) return dp[index][sum+1000];
+        return dp[index][sum+1000] = dfs1(nums,sum+nums[index],target,index+1)+dfs1(nums,sum-nums[index],target,index+1);
+    }
+
+    /**
+     * 01背包
+     * 将求解目标和转化为一个01背包问题，
+     * 数组和为sum，正数和为pos，负数和为sum-pos
+     * 则 正数和减去负数和等于target值
+     * pos-(sum-pos)=target
+     * ==> pos = (sum+target)/2
+     * 问题转为是否取当前数组的值，并构成pos的背包问题
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int findTargetSumWays4(int[] nums, int target) {
+        int sum = 0;
+        for(int num:nums) sum+=num;
+        if((sum+target)%2!=0 || (sum+target)<0) return 0;
+        int n = nums.length;
+        target = (sum+target)/2;
+        int dp[][] = new int [n+1][target+1];
+        dp[0][0] = 1;
+        for(int i=1;i<=n;i++){
+            for(int j=0;j<=target;j++){
+                if(j>=nums[i-1]) dp[i][j] = dp[i-1][j]+dp[i-1][j-nums[i-1]];
+                else dp[i][j] = dp[i-1][j];
+            }
+        }
+        return dp[n][target];
+    }
+
+    /**
+     * 空间优化
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int findTargetSumWays5(int[] nums, int target) {
+        int sum = 0;
+        for(int num:nums) sum+=num;
+        if((sum+target)%2!=0 || (sum+target)<0) return 0;
+        int n = nums.length;
+        target = (sum+target)/2;
+        int dp[] = new int [target+1];
+        dp[0] = 1;
+        for(int i=1;i<=n;i++){
+            for(int j=target;j>=nums[i-1];j--){
+                dp[j] += dp[j-nums[i-1]];
+
+            }
+        }
+        return dp[target];
     }
 
 }

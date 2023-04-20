@@ -43,27 +43,22 @@ public class offer57_和为s的连续正数序列II {
      * @return
      */
     public int[][] findContinuousSequence(int target) {
-        int i =1;
-        int j = 1;
-        int sum = 0;
-        List<int[]> ans = new ArrayList<>();
-        while(i<=target/2){
-            if(sum==target){
-                int res[] = new int[j-i];
-                for(int k =i;k<j;k++){
-                    res[k-i] = k;
+        List<int[]> vec = new ArrayList<int[]>();
+        for (int l = 1, r = 2; l < r;) {
+            int sum = (l + r) * (r - l + 1) / 2;
+            if (sum == target) {
+                int[] res = new int[r - l + 1];
+                for (int i = l; i <= r; ++i) {
+                    res[i - l] = i;
                 }
-                ans.add(res);
-                sum-=i;
-                i++;
-            }else if(sum<target){
-                sum+=j;
-                j++;
-            }else{
-                sum-=i;
-                i++;
+                vec.add(res);
+                l++;
+            } else if (sum < target) {
+                r++;
+            } else {
+                l++;
             }
         }
-        return ans.toArray(new int[0][]);
+        return vec.toArray(new int[vec.size()][]);
     }
 }

@@ -49,4 +49,28 @@ public class 全排列_lc_46 {
             Collections.swap(output,i,first);
         }
     }
+
+
+    public List<List<Integer>> permute1(int[] nums) {
+        List<List<Integer>> ans = new ArrayList<>();
+        dfs(nums,new ArrayList<Integer>(),ans,new boolean[nums.length]);
+        return ans;
+    }
+
+    void dfs(int []nums,List<Integer> path,List<List<Integer>> ans,boolean used[]){
+        if(path.size()==nums.length){
+            ans.add(new ArrayList(path));
+            return;
+        }
+
+        for(int i=0;i<nums.length;i++){
+            if(used[i]) continue;
+            used[i] = true;
+            path.add(nums[i]);
+            dfs(nums,path,ans,used);
+            used[i] = false;
+            path.remove(path.size()-1);
+        }
+    }
+
 }

@@ -2,12 +2,35 @@ package 递归;
 
 import com.oracle.net.Sdp;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * @author zhp
  * @date 2022-09-06 21:24
  * https://leetcode.cn/problems/house-robber/
  */
 public class 打家劫舍_lc_198 {
+
+    /**
+     * 记搜
+     * @param nums
+     * @return
+     */
+    public int rob1(int[] nums) {
+        dp = new int[nums.length];
+        Arrays.fill(dp,-1);
+        return dfs(0,nums);
+    }
+
+    int dp[] ;
+    public int dfs(int index,int nums[]){
+        if(index>=nums.length) return 0;
+        if(dp[index]!=-1) return dp[index];
+        return dp[index] = Math.max(dfs(index+1,nums),dfs(index+2,nums)+nums[index]);
+    }
+
     /**经典的dp问题
      * 设定偷到第i家时的最大收益为dp[i]
      * 分析状态，每家被了偷之后，该家前面的家庭都不能被偷，所以需要选择偷与不偷当前家庭，
@@ -31,4 +54,6 @@ public class 打家劫舍_lc_198 {
         }
         return dp[dp.length-1];
     }
+
+
 }

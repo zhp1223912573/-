@@ -1,5 +1,7 @@
 package 递归;
 
+import java.util.Arrays;
+
 /**
  * @author zhp
  * @date 2022-09-07 13:29
@@ -39,10 +41,31 @@ package 递归;
  * 不操作的状态从始至终都为0
  * 第一次买入dp[0][1] = -prices[0]
  * 第一次卖出dp[0][2] = 0
- * 第二次买入dp[0][1] = -prices[0]
+ * 第二次买入dp[0][3] = -prices[0]
  * 第二次卖出dp[0][4] = 0
  */
 public class 卖股票的最佳时期III_lc_123 {
+
+    /**
+     * 记搜
+     */
+    public int maxProfit2(int[] prices) {
+        dp = new int[prices.length][5];
+        for(int i=0;i<prices.length;i++){
+            Arrays.fill(dp[i],-1);
+        }
+        return dfs(prices,0,0);
+    }
+    int dp[][];
+    public int dfs(int[] prices,int index,int status){
+        if(index==prices.length || status==5) return 0;
+        if(dp[index][status]!=-1) return dp[index][status];
+        if(status%2==0){
+            return dp[index][status]=Math.max(dfs(prices,index+1,status),dfs(prices,index+1,status+1)-prices[index]);
+        }else{
+            return dp[index][status]=Math.max(dfs(prices,index+1,status),dfs(prices,index+1,status+1)+prices[index]);
+        }
+    }
 
     /**dp
      *

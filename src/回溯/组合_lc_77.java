@@ -4,12 +4,18 @@ import java.security.interfaces.DSAParams;
 import java.util.ArrayList;
 import java.util.List;
 
+import static sun.misc.Version.println;
+
 /**
  * @author zhp
  * @date 2022-07-25 16:25
  * https://leetcode.cn/problems/combinations/solution/
  */
 public class 组合_lc_77 {
+
+    public static void main(String[] args) {
+
+    }
     /**
      * 回溯
      * @param n
@@ -32,7 +38,7 @@ public class 组合_lc_77 {
         }
 
         //不选择当前的数
-        backtract(ans,path,cur+1,n,k);
+        backtract(ans,path,cur+1, n,k);
         //旋转当前的数
         path.add(cur);
         backtract(ans,path,cur+1,n,k);

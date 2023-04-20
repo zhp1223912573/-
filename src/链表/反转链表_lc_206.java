@@ -28,7 +28,7 @@ public class 反转链表_lc_206 {
                     ListNode next = cur.next;
                     cur.next = pre;
                     pre = cur;
-                    cur = cur.next;
+                    cur = next;
                 }
                 return pre;
         }
@@ -44,10 +44,12 @@ public class 反转链表_lc_206 {
      * @return
      */
     public static ListNode reverseList1(ListNode head){
-       if(head==null || head.next==null){
+        //到达尾节点，也就是反转后的新头结点
+       if(head==null||head.next==null){
            return head;
        }
 
+       //传递新的头结点，也就链表未反转时的尾节点
        ListNode newHead = reverseList1(head.next);
        head.next.next = head;
        head.next = null;

@@ -1,5 +1,6 @@
 package 递归;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 /**
@@ -9,6 +10,40 @@ import java.util.Stack;
  *https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/
  */
 public class 卖股票的最佳时期I_lc_121 {
+    /**
+     * 记搜
+     * @param prices
+     * @return
+     */
+    public int maxProfit3(int[] prices) {
+        dp = new int[prices.length][2];
+        for(int i=0;i<prices.length;i++){
+            Arrays.fill(dp[i],-1);
+        }
+        return dfs(0,prices,0);
+    }
+    int dp[][];
+
+    /**
+     * stats表示当前状态
+     * 0-没有买入
+     * 1-第一次卖出
+     * 2-终止
+     * @param index
+     * @param prices
+     * @param status
+     * @return
+     */
+    public int dfs(int index,int [] prices,int status){
+        if(index==prices.length||status==2) return 0;
+        if(dp[index][status]!=-1) return dp[index][status];
+        if(status==0){
+            return dp[index][status] = Math.max(dfs(index+1,prices,0),dfs(index+1,prices,1)-prices[index]);
+        }
+        return dp[index][status] =  Math.max(dfs(index+1,prices,1),dfs(index+1,prices,2)+prices[index]);
+
+    }
+
     /**贪心
      * 顺序变量，找到最小值和每个数值的差，从而得到最大收益
      *

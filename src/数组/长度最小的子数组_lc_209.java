@@ -5,9 +5,9 @@ import java.util.Arrays;
 /**
  * @author zhp
  * @date 2022-07-15 20:04
- * https://leetcode.cn/problems/minimum-size-subarray-sum/solution/
+ * https://leetcode.cn/problems/minimum-size-subarray-sum/
  */
-public class 长度最小的子数组_lc_207 {
+public class 长度最小的子数组_lc_209 {
     /**
      * 暴力法
      * O（n^2)
@@ -35,6 +35,7 @@ public class 长度最小的子数组_lc_207 {
             int target = s + sums[i - 1];
             int bound = Arrays.binarySearch(sums, target);
             if (bound < 0) {
+                //若查不到目标数，则返回-1
                 bound = -bound - 1;
             }
             if (bound <= n) {

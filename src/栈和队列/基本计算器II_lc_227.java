@@ -9,7 +9,7 @@ import java.util.*;
  * https://leetcode.cn/problems/basic-calculator/
  */
 public class 基本计算器II_lc_227 {
-    /**基于双栈的计算表达式实现
+    /**基于双栈的计算表达式实现 可以解决类似问题的通解
      *
      * 参考博客：
      * https://leetcode.cn/problems/basic-calculator-ii/solution/shi-yong-shuang-zhan-jie-jue-jiu-ji-biao-c65k/
@@ -99,7 +99,7 @@ public class 基本计算器II_lc_227 {
      * @param nums
      * @param ops
      */
-    private void cal(Deque<Integer> nums, Deque<Character> ops) {
+    private void cal(Deque<Integer> nums, Deque<Character> ops)  {
         //nums为1时，无法进行二元运算，直接返回
         if(nums.isEmpty()||nums.size()<2){
             return;
@@ -129,4 +129,44 @@ public class 基本计算器II_lc_227 {
         nums.addLast(ans);
     }
 
+    /**
+     * 方法2
+     * 表达式只存在+-/*四种负号，直接将+-号后的数值保存到栈中，乘除号后的数值与栈顶进行运算，
+     * 再保存到栈顶，最后将栈中的数值累加即可得到答案。
+     * 减号后的数值保存相反数
+     */
+    public int calculate1(String s){
+        Deque<Integer> stack = new ArrayDeque<>();
+        int n = s.length();
+        char preSign = '+';
+        int num = 0;
+        for(int i=0;i<n;i++){
+            if(Character.isDigit(s.charAt(i))){
+                num = num*10 + s.charAt(i)-'0';
+            }
+            if(!Character.isDigit(s.charAt(i))&&s.charAt(i)!=' ' || i==n-1){
+                switch (preSign){
+                    case '+':
+                        stack.push(num);
+                        break;
+                    case '-':
+                        stack.push(-num);
+                        break;
+                    case '*':
+                        stack.push(stack.pop()*num);
+                        break;
+                    case '/':
+                        stack.push(stack.pop()/num);
+                        break;
+                }
+                preSign = s.charAt(i);
+                num = 0;
+            }
+        }
+        int ans = 0;
+        while(!stack.isEmpty()){
+            ans += stack.pop();
+        }
+        return ans;
+    }
 }

@@ -14,7 +14,7 @@ import java.util.Stack;
  * str = "dbcacbca"，删掉第一个'b'、第一个'c'、第二个'c'、第二个'a'，得到"dabc"，
  * 是所有结 果字符串中字典序最小的
  */
-public class _去除重复字符得到最小字典序字符串_lc_316 {
+public class 去除重复字符得到最小字典序字符串_lc_316 {
 
     /**https://leetcode.cn/problems/remove-duplicate-letters/submissions/
      * 为了得到最小字典序的字符串，需要实现以下3个目标：

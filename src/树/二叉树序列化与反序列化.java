@@ -1,5 +1,6 @@
 package 树;
 
+
 import shiyan.Queue.LinkedQueue;
 import shiyan.Queue.Queue;
 
@@ -8,7 +9,7 @@ import shiyan.Queue.Queue;
  * @date 2022-06-12 17:12
  * 二叉树的序列化与反序列化
  */
-public class 二叉树序列化与反序列化 {
+public class   二叉树序列化与反序列化 {
 
 
     /**
@@ -39,7 +40,7 @@ public class 二叉树序列化与反序列化 {
      */
     public static TreeNode reconByPreStr(String preStr){
         String split[] = preStr.split("_");
-        Queue<String>  queue = new LinkedQueue<>();
+        Queue<String> queue = new LinkedQueue<>();
         for(String string : split){
             queue.add(string);
         }

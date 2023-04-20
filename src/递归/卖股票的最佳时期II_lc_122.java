@@ -1,5 +1,7 @@
 package 递归;
 
+import java.util.Arrays;
+
 /**
  * @author zhp
  * @date 2022-09-07 13:09
@@ -23,6 +25,40 @@ package 递归;
  */
 public class 卖股票的最佳时期II_lc_122 {
 
+    /**
+     * 记搜
+     * @param prices
+     * @return
+     */
+    public int maxProfit3(int[] prices) {
+        dp = new int[prices.length][2];
+        for(int i=0;i<prices.length;i++){
+            Arrays.fill(dp[i],-1);
+        }
+        return dfs(0,prices,0);
+    }
+    int dp[][];
+
+    /**
+     * stats表示当前状态
+     * 0-没有买入
+     * 1-第一次卖出
+     * 2-终止
+     * @param index
+     * @param prices
+     * @param status
+     * @return
+     */
+    public int dfs(int index,int [] prices,int status){
+        if(index==prices.length) return 0;
+        if(dp[index][status]!=-1) return dp[index][status];
+        if(status==0){
+            return dp[index][status] = Math.max(dfs(index+1,prices,0),dfs(index+1,prices,1)-prices[index]);
+        }
+        return dp[index][status] =  Math.max(dfs(index+1,prices,1),dfs(index+1,prices,0)+prices[index]);
+
+    }
+
     /**dp
      * 综上分析
      * @param prices
@@ -40,5 +76,18 @@ public class 卖股票的最佳时期II_lc_122 {
 
         return dp[len-1][1];
 
+    }
+
+    /**
+     * 贪心，只要第二天能收入，就买入前一天的
+     * @param prices
+     * @return
+     */
+    public int maxProfit4(int[] prices) {
+        int ans = 0;
+        for(int i=1;i<prices.length;i++){
+            if(prices[i]-prices[i-1]>0) ans+=prices[i]-prices[i-1];
+        }
+        return ans;
     }
 }

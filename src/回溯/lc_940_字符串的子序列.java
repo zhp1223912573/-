@@ -23,6 +23,7 @@ public class lc_940_字符串的子序列 {
      * @param characters
      */
     private static void process(char[] chars, int i, ArrayList<Character> characters) {
+
         if(i==chars.length){
             for(Character character : characters){
                 System.out.print(character);

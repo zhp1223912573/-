@@ -11,7 +11,7 @@ import java.util.Queue;
  * 2.一个栈
  * 本质上使用一个即可 原理相通
  */
-public class QueueToStack {
+public class  QueueToStack {
 
     /**
      * 每压入一个数字，都将整个队列中原本的数字循环一遍，这样就实现类似栈的结构

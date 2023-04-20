@@ -9,6 +9,7 @@ import java.util.Set;
  * https://leetcode.cn/problems/happy-number
  */
 public class 快乐数_lc_202 {
+
     public int getNext(int n){
         int total = 0;
         while(n>0){

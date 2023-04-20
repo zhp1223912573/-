@@ -1,11 +1,37 @@
 package 递归;
 
+import java.util.Arrays;
+
 /**
  * @author zhp
  * @date 2022-07-26 21:44
  * https://leetcode.cn/problems/unique-paths-ii/solution/jian-dan-dpbi-xu-miao-dong-by-sweetiee/
  */
 public class 不同路径II_lc_63 {
+
+    /**
+     * 记搜
+     * @param obstacleGrid
+     * @return
+     */
+    public int uniquePathsWithObstacles3(int[][] obstacleGrid) {
+        int m = obstacleGrid.length;
+        int n = obstacleGrid[0].length;
+        dp = new int[m][n];
+        for(int i=0;i<m;i++){
+            Arrays.fill(dp[i],-1);
+        }
+        return dfs(0,0,m,n,obstacleGrid);
+    }
+    int dp[][];
+    public int dfs(int x,int y,int m,int n,int [][] grid){
+        if(x==m||y==n||grid[x][y]==1) return 0;
+        if(x==m-1&&y==n-1) return 1;
+
+        if(dp[x][y]!=-1 ) return dp[x][y];
+        return dp[x][y] = dfs(x+1,y,m,n,grid)+dfs(x,y+1,m,n,grid);
+    }
+
     /**
      * 本题是不同路径I的扩展，仅仅是加多了一个障碍，正常的dp步骤中只需要增加一些障碍检测的代码就可以了。
      *

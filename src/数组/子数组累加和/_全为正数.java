@@ -1,4 +1,4 @@
-package 特殊技巧.子数组累加和;
+package 数组.子数组累加和;
 
 /**
  * @author zhp

@@ -23,7 +23,7 @@ public class ms08_03_魔术索引 {
     }
 
     /**
-     *分治
+     *二分
      * @param nums
      * @return
      */

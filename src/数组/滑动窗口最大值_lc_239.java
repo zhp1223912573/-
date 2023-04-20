@@ -1,7 +1,9 @@
 package 数组;
 
 import java.util.ArrayDeque;
+import java.util.Comparator;
 import java.util.Deque;
+import java.util.PriorityQueue;
 
 /**
  * @author zhp
@@ -28,7 +30,6 @@ public class 滑动窗口最大值_lc_239 {
             deque.offerLast(i);
         }
         ans[0] = nums[deque.peekFirst()];
-
         for(int i=k;i<nums.length;i++){
             while(!deque.isEmpty()&&nums[deque.peekLast()]<nums[i]){
                 deque.pollLast();
@@ -42,6 +43,35 @@ public class 滑动窗口最大值_lc_239 {
         }
         return ans;
     }
+
+    /**
+     * 优先队列
+     * @param nums
+     * @param k
+     * @return
+     */
+    public int[] maxSlidingWindow2(int[] nums, int k) {
+        int n = nums.length;
+        PriorityQueue<int[]> pq = new PriorityQueue<int[]>(new Comparator<int[]>() {
+            public int compare(int[] pair1, int[] pair2) {
+                return pair1[0] != pair2[0] ? pair2[0] - pair1[0] : pair2[1] - pair1[1];
+            }
+        });
+        for (int i = 0; i < k; ++i) {
+            pq.offer(new int[]{nums[i], i});
+        }
+        int[] ans = new int[n - k + 1];
+        ans[0] = pq.peek()[0];
+        for (int i = k; i < n; ++i) {
+            pq.offer(new int[]{nums[i], i});
+            while (pq.peek()[1] <= i - k) {
+                pq.poll();
+            }
+            ans[i - k + 1] = pq.peek()[0];
+        }
+        return ans;
+    }
+
 
     /**分块+预处理
      *

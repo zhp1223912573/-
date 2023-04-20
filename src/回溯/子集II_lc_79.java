@@ -1,8 +1,7 @@
 package 回溯;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 import java.util.List;
 
 /**
@@ -61,6 +60,31 @@ public class 子集II_lc_79 {
         t.add(nums[cur]);
         dfs(true,cur+1,nums);
         t.remove(t.size()-1);
+    }
+
+
+    class Solution {
+        List<Integer> t = new ArrayList<Integer>();
+        List<List<Integer>> ans = new ArrayList<List<Integer>>();
+
+        public List<List<Integer>> subsetsWithDup(int[] nums) {
+            Arrays.sort(nums);
+            dfs(0,nums);
+            return ans;
+        }
+
+
+        private void dfs( int index, int[] nums) {
+            ans.add(new ArrayList(t));
+            Set<Integer> set = new HashSet<Integer>();
+            for(int i=index;i<nums.length;i++){
+                if(set.contains(nums[i])) continue;
+                set.add(nums[i]);
+                t.add(nums[i]);
+                dfs(i+1,nums);
+                t.remove(t.size()-1);
+            }
+        }
     }
 
 }

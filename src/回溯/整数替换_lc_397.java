@@ -29,6 +29,30 @@ public class 整数替换_lc_397 {
         }
     }
 
+    public int integerReplacement3(int n) {
+        return dfs(n);
+    }
+
+    /**
+     * 记搜
+     */
+    Map<Integer,Integer> dp = new HashMap<>();
+    public int dfs(int n){
+        if(n==1){
+            return 0;
+        }
+        if(dp.get(n)!=null) return dp.get(n);
+        int ans = 0;
+        if(n%2==0){
+            ans= dfs(n/2)+1;
+        }else{
+            ans = Math.min(dfs(n/2+1),dfs(n/2))+2;
+        }
+        dp.put(n,ans);
+        return ans;
+
+    }
+
     /**
      * 贪心
      */

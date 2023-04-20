@@ -23,13 +23,14 @@ public class 找到k个最接近的元素_lc_658 {
     }
 
     /**
-     * 二分查找+双指针
+     * 二分查找+数组.双指针
      * 当x小于数组最小值时，最接近的k个元素是数组前k个元素
      * 当x大于数组最大值时，最接近的k个元素是数组的末尾k个元素
      * 当x位于数组内部位置i时，则最接近x的k个元素一定位于[i-k-1,i+k-1]区间内
      *      此时我们双指针指向区间两端，直到区间内元素等于k个元素，则区间内的元素就是答案。
      */
     public List<Integer> findClosestElements1(int[] arr, int k, int x){
+
         List<Integer> ret = Arrays.stream(arr).boxed().collect(Collectors.toList());
         int n = arr.length;
         if(x<=ret.get(0)){

@@ -7,6 +7,7 @@ package 树;
  * https://leetcode-cn.com/problems/search-in-a-binary-search-tree/submissions/
  */
 public class 二叉搜索树中val值的查找_lc_700 {
+    //递归
     public TreeNode searchBST(TreeNode root, int val) {
         if(root==null) return null;
         if(root.val==val) return root;
@@ -15,6 +16,7 @@ public class 二叉搜索树中val值的查找_lc_700 {
         return searchBST(root.right,val);
     }
 
+    //迭代
     public TreeNode searchBSTdiedai(TreeNode root, int val){
         while(root!=null){
             if(root.val==val) return root;

@@ -1,5 +1,7 @@
 package 递归;
 
+import java.util.Arrays;
+
 /**
  * @author zhp
  * @date 2022-09-06 21:36
@@ -11,6 +13,29 @@ package 递归;
  * 上述两者既符合条件，分解后的情形也和打家劫舍1完全一致。
  */
 public class 打家劫舍II_lc_213 {
+
+    /**
+     * 记搜
+     *
+     * @param nums
+     * @return
+     */
+    public int rob1(int[] nums) {
+
+        if(nums.length==1) return nums[0];
+        dp = new int[nums.length];
+        Arrays.fill(dp,-1);
+        int ans = dfs(0,nums.length-1,nums);
+        Arrays.fill(dp,-1);
+        int ans1 = dfs(1,nums.length,nums);
+        return Math.max(ans,ans1);
+    }
+    int dp[];
+    int dfs(int index,int end,int nums[]){
+        if(index>=end) return 0;
+        if(dp[index]!=-1) return dp[index];
+        return dp[index] = Math.max(dfs(index+1,end,nums),dfs(index+2,end,nums)+nums[index]);
+    }
 
     public int rob(int[] nums) {
         //特殊情况

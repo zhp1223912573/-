@@ -69,6 +69,7 @@ public class ms01_09_字符串轮转 {
     public boolean isFlipedString2(String s1, String s2) {
         return s1.length()==s2.length()&&(s1+s1).contains(s2);
     }
+
     public static void main(String[] args) {
         ms01_09_字符串轮转 a =new ms01_09_字符串轮转();
         System.out.println(a.isFlipedString("waterbottle","erbottlewat"));
