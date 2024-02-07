@@ -29,7 +29,7 @@ public class _最长不重复字符串 {
         for(int i=0;i<chars.length;i++){
             map[i] = -1;
         }
-        int pre = -1;//
+        int pre = -1;//代表当前字符前一个字符的上一次出现的位置
         int cur = 0;//当前长度
         int len = 0;//最大长度
         for(int i=0;i<chars.length;i++){

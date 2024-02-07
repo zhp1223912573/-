@@ -9,23 +9,24 @@ package 树;
  * https://leetcode.cn/problems/binary-tree-maximum-path-sum/
  */
 public class 二叉树最大路径和_lc_124 {
-    int maxSum;
+    int maxSum = Integer.MIN_VALUE;
+
     public int maxPathSum(TreeNode root) {
         maxGain(root);
         return maxSum;
     }
 
     private int maxGain(TreeNode root) {
-        if(root==null) return 0;
+        if (root == null) return 0;
 
         //去除为负数的贡献值
-        int left = Math.max(maxGain(root.left),0);
-        int right = Math.max(maxGain(root.right),0);
+        int left = Math.max(maxGain(root.left), 0);
+        int right = Math.max(maxGain(root.right), 0);
 
-        int sum = left+right+root.val;
-        maxSum = Math.max(sum,maxSum);
+        int sum = left + right + root.val;
+        maxSum = Math.max(sum, maxSum);
 
-        return (left<right?right:left)+root.val;
+        return (left < right ? right : left) + root.val;
     }
 
 }

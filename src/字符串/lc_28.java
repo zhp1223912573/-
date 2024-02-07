@@ -10,6 +10,7 @@ import org.junit.Test;
 public class lc_28 {
     @Test
     public void test1(){
+
         int strStr = strStr("ababcaababcaabc" ,
                 "ababcaabc");
         System.out.println(strStr);

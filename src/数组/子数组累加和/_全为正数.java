@@ -17,26 +17,22 @@ public class _全为正数 {
      * 如果当前子数组的和小于目标值k，则右移右指针扩大数组
      * 如果当前子数组的和大于目标值k，则左移左指针缩小数组
      */
-    public static int getmaxLength(int arr[],int k){
-        if(arr==null || arr.length<1 || k<0){
+    public static int getmaxLength(int arr[], int k) {
+        if (arr == null || arr.length < 1 || k < 0) {
             return 0;
         }
         int left = 0;
         int right = 0;
         int sum = arr[0];
         int len = 0;
-        while(right!=arr.length){
-            if(sum==k){
-                len = Math.max(len,right-left-1);
-                sum-=arr[left++];
-            }else if(sum<k){
-                right++;
-                if(right==arr.length){
-                    break;
-                }
-                sum+=arr[right];
-            }else{
-                sum-=arr[left++];
+        while (right <= arr.length) {
+            if (sum == k) {
+                len = Math.max(len, right - left - 1);
+                sum -= arr[left++];
+            } else if (sum < k) {
+                sum += arr[++right];
+            } else {
+                sum -= arr[left++];
             }
         }
         return len;

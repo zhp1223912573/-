@@ -39,6 +39,7 @@ public class 左叶子结点之和_lc_404 {
      * 递归精简版本
       * @param root
      * @return
+     * 一个节点的左子节点为叶子节点时，直接返回值，反之继续递归求解
      */
     public int sum(TreeNode root){
         if(root==null) return 0;

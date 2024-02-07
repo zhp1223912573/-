@@ -12,8 +12,8 @@ import java.util.List;
 public class 二叉搜索树的众数_lc_501 {
 
     public int[] findMode(TreeNode root) {
-         int []a={1};
-         return a;
+        int[] a = {1};
+        return a;
     }
 
     /**
@@ -64,41 +64,40 @@ public class 二叉搜索树的众数_lc_501 {
      * 如果count大于maxcount则清楚集合记录下来的数字 因为出现了最大值 前面的所有数字作废
      * 该方法只需要一次遍历
      */
-    List<Integer> list= new ArrayList<Integer>();
-    int count=0;
-    int maxcount=0;
-    int pre=-1;
+    List<Integer> list = new ArrayList<Integer>();
+    int count = 0;
+    int maxcount = 0;
+    int pre = -1;
 
-    public  void fin(TreeNode root){
-        if(root==null) return;
+    public void fin(TreeNode root) {
+        if (root == null) return;
 
-        if(root.left!=null) fin(root.left);
+        if (root.left != null) fin(root.left);
 
-        if(pre==-1){
-            count=1;
-        }else if(pre==root.val){
+        if (pre == -1) {
+            count = 1;
+        } else if (pre == root.val) {
             count++;
-        }else if(pre!=root.val){
-            count=1;
+        } else if (pre != root.val) {
+            count = 1;
         }
 
-        if(count==maxcount){
+        if (count == maxcount) {
             list.add(root.val);
         }
 
         //出现最新的众数 清空先前的众数
-        if(count>maxcount){
-            maxcount=count;
+        if (count > maxcount) {
+            maxcount = count;
             list.clear();
             list.add(root.val);
         }
 
-        pre=root.val;
+        pre = root.val;
 
-        if(root.right!=null) fin(root.right);
+        if (root.right != null) fin(root.right);
 
     }
-
 
 
 }

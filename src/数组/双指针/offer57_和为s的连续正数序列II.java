@@ -1,4 +1,4 @@
-package 数组;
+package 数组.双指针;
 
 import java.util.ArrayList;
 import java.util.List;

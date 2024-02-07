@@ -51,6 +51,7 @@ public class Main {
                         if(y==0){
                             dp[x][y][z] = dp[x-1][y][z];
                         }else{
+                            //选与不选当前位置到数值
                             dp[x][y][z] = dp[x-1][y][z]+dp[x-1][y-1][(z+nums[x-1])%2];
                         }
                     }

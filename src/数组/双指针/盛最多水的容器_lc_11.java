@@ -1,4 +1,4 @@
-package 数组;
+package 数组.双指针;
 
 /**
  * @author zhp

@@ -13,6 +13,7 @@ import java.util.List;
 public class 课程表II_lc_210 {
     /**
      * 经典的拓扑排序算法题
+     *
      * @param numCourses
      * @param prerequisites
      * @return
@@ -21,12 +22,12 @@ public class 课程表II_lc_210 {
         //下一节点数组及节点入度初始化
         List<List<Integer>> nx = new ArrayList<>();
         int in[] = new int[numCourses];
-        for(int i=0;i<numCourses;i++){
+        for (int i = 0; i < numCourses; i++) {
             nx.add(new LinkedList<>());
         }
 
         //读入每个节点的下一个节点
-        for(int pre[]: prerequisites){
+        for (int pre[] : prerequisites) {
             int a = pre[0];
             int b = pre[1];
             in[a]++;
@@ -35,22 +36,23 @@ public class 课程表II_lc_210 {
 
         //将入度为0的节点读入队列
         Deque<Integer> deque = new LinkedList<>();
-        for(int i=0;i<numCourses;i++){
-            if(in[i]==0) deque.add(i);
+        for (int i = 0; i < numCourses; i++) {
+            if (in[i] == 0) deque.add(i);
         }
 
         //开始迭代，直到队列为空
-        int index=0;
+        int index = 0;
         int res[] = new int[numCourses];
-        while(!deque.isEmpty()){
+        while (!deque.isEmpty()) {
             int node = deque.pollFirst();
             res[index++] = node;
-            for(int next:nx.get(node)){
+            for (int next : nx.get(node)) {
                 in[next]--;
-                if(in[next]==0) deque.add(next);
+                if (in[next] == 0) deque.add(next);
             }
         }
-        if(index<numCourses) return new int[]{};
+        //如果节点个数少于总结点个数，说明存在环，直接返回空
+        if (index < numCourses) return new int[]{};
         return res;
     }
 }

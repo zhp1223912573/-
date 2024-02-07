@@ -44,8 +44,8 @@ public class Main {
         int dp1[] = new int[n];
         int dp2[] = new int[n];
 
-        dp1[0] = nums[0]>0?1:0;
-        dp1[1] = nums[0]<0?1:0;
+        dp1[0] = nums[0]>0?1:0;//以第i个元素结尾，乘积为正的子串数量
+        dp2[0] = nums[0]<0?1:0;//以第i个元素结尾，乘积为负的子串数量
 
         int w = dp1[0];
         int b = dp2[0];

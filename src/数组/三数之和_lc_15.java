@@ -36,7 +36,7 @@ public class 三数之和_lc_15 {
                     list.add(nums[R]);
                     ans.add(list);
                     while(L<R&&nums[L+1]==nums[L]) L++;
-                    while(L<R&&nums[R]==nums[R-1]) R++;
+                    while(L<R&&nums[R]==nums[R-1]) R--;
                     L++;
                     R--;
                 }else if(cur<0){

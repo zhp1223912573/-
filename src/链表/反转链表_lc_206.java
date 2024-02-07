@@ -14,24 +14,24 @@ public class 反转链表_lc_206 {
 
     /**
      * 迭代
+     *
      * @param head
      * @return
      */
-    public  static ListNode reverseList(ListNode head) {
-
-                if(head==null){
-                    return null;
-                }
-                ListNode pre = null;
-                ListNode cur = head;
-                while(cur!=null){
-                    ListNode next = cur.next;
-                    cur.next = pre;
-                    pre = cur;
-                    cur = next;
-                }
-                return pre;
+    public static ListNode reverseList(ListNode head) {
+        if (head == null) {
+            return null;
         }
+        ListNode pre = null;
+        ListNode cur = head;
+        while (cur != null) {
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        return pre;
+    }
 
     /**
      * 递归
@@ -40,21 +40,21 @@ public class 反转链表_lc_206 {
      * 递归到5时，由于当前节点的后一节点为空，当前节点就是新的头节点，
      * 也就是在节点5开始回收，回到节点4时，设置节点5的下一节点为当前节点4，
      * 当前节点的下一节点设置为null，继续回收
-      * @param head
+     *
+     * @param head
      * @return
      */
-    public static ListNode reverseList1(ListNode head){
+    public static ListNode reverseList1(ListNode head) {
         //到达尾节点，也就是反转后的新头结点
-       if(head==null||head.next==null){
-           return head;
-       }
+        if (head == null || head.next == null) {
+            return head;
+        }
 
-       //传递新的头结点，也就链表未反转时的尾节点
-       ListNode newHead = reverseList1(head.next);
-       head.next.next = head;
-       head.next = null;
-       return newHead;
-
+        //传递新的头结点，也就链表未反转时的尾节点
+        ListNode newHead = reverseList1(head.next);
+        head.next.next = head;
+        head.next = null;
+        return newHead;
 
 
     }

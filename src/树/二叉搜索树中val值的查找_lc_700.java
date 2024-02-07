@@ -9,19 +9,21 @@ package 树;
 public class 二叉搜索树中val值的查找_lc_700 {
     //递归
     public TreeNode searchBST(TreeNode root, int val) {
-        if(root==null) return null;
-        if(root.val==val) return root;
+        if (root == null) return null;
+        if (root.val == val) return root;
 
-        if(root.val>val) return searchBST(root.left,val);
-        return searchBST(root.right,val);
+        if (root.val > val) return searchBST(root.left, val);
+        return searchBST(root.right, val);
     }
 
     //迭代
-    public TreeNode searchBSTdiedai(TreeNode root, int val){
-        while(root!=null){
-            if(root.val==val) return root;
-            if(root.val>val) root=root.left;
-            else if(root.val<val) root=root.right;
+    public TreeNode searchBSTdiedai(TreeNode root, int val) {
+
+
+        while (root != null) {
+            if (root.val == val) return root;
+            if (root.val > val) root = root.left;
+            else if (root.val < val) root = root.right;
         }
 
         return null;

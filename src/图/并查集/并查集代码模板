@@ -28,14 +28,11 @@ class UnionFind {
 //路径压缩
 class UnionFind {
     private int[] parent;
-    private int[] rank;
 
     public UnionFind(int n) {
         parent = new int[n];
-        rank = new int[n];
-        for (int i = 0; i &lt; n; i++) {
+        for (int i = 0; i < n; i++) {
             parent[i] = i;
-            rank[i] = 1;
         }
     }
 
@@ -51,19 +48,12 @@ class UnionFind {
         int rootX = find(x);
         int rootY = find(y);
         if (rootX != rootY) {
-            if (rank[rootX] &gt; rank[rootY]) {
-                parent[rootY] = rootX;
-            } else if (rank[rootX] &lt; rank[rootY]) {
-                parent[rootX] = rootY;
-            } else {
-                parent[rootY] = rootX;
-                rank[rootX]++;
-            }
+              parent[rootX] = rootY;
         }
     }
 }
 
-//按秩合并
+//按秩合并 基本上都不会使用到
 class UnionFind {
     private int[] parent;
     private int[] rank;
@@ -71,7 +61,7 @@ class UnionFind {
     public UnionFind(int n) {
         parent = new int[n];
         rank = new int[n];
-        for (int i = 0; i &lt; n; i++) {
+        for (int i = 0; i < n; i++) {
             parent[i] = i;
             rank[i] = 1;
         }
@@ -89,9 +79,9 @@ class UnionFind {
         int rootX = find(x);
         int rootY = find(y);
         if (rootX != rootY) {
-            if (rank[rootX] &gt; rank[rootY]) {
+            if (rank[rootX] >=rank[rootY]) {
                 parent[rootY] = rootX;
-            } else if (rank[rootX] &lt; rank[rootY]) {
+            } else if (rank[rootX] < rank[rootY]) {
                 parent[rootX] = rootY;
             } else {
                 parent[rootY] = rootX;

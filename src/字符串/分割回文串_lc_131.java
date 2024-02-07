@@ -76,6 +76,7 @@ public class 分割回文串_lc_131 {
      */
     boolean f[][] ;
     private void backtract1(String s, int start) {
+        s.trim();
         if(start==s.length()){
             ans.add(new ArrayList<>(path));
             return ;

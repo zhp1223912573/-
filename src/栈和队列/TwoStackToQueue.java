@@ -10,9 +10,9 @@ import java.util.Stack;
  */
 public class TwoStackToQueue {
 
-    private int front ;//记录队首元素 peek时输出
-    private Stack<Integer> s1=new Stack<>();
-    private Stack<Integer> s2=new Stack<>();
+    private int front;//记录队首元素 peek时输出
+    private Stack<Integer> s1 = new Stack<>();
+    private Stack<Integer> s2 = new Stack<>();
 
 
     /**
@@ -49,14 +49,14 @@ public class TwoStackToQueue {
     /**
      * s1依旧存储栈元素 但每当pop时将s1中全部pop到s2中 从而得到一个队列
      */
-    public void push1(int x){
-        if(s1.empty()) front=x;
+    public void push1(int x) {
+        if (s1.empty()) front = x;
         s1.push(x);
     }
 
-    public void pop1(){
-        if(s2.empty()){
-            while(!s1.empty()){
+    public void pop1() {
+        if (s2.empty()) {
+            while (!s1.empty()) {
                 s2.push(s1.pop());
             }
         }

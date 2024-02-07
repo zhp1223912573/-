@@ -57,13 +57,13 @@ public class Main {
         for(int i=1;i<=n;i++){
             for(int j=0;j<=x;j++){
                 for(int k=0;k<=y;k++){
-                    //全额买
+                    //全额买或不买
                     if(j>=cost[i-1][0]){
                         dp[i][j][k] = Math.max(dp[i-1][j][k],dp[i-1][j-cost[i-1][0]][k]+1);
                     }
                     //打折买
                      if(k>0&&j>=cost[i-1][1]){
-                        //减去一张消费券
+                        //减去一张消费券购买或者不买
                         dp[i][j][k] = Math.max(dp[i-1][j][k],dp[i-1][j-cost[i-1][1]][k-1]+1);
                     }
                 }

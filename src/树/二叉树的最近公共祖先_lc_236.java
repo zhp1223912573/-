@@ -14,8 +14,7 @@ import java.util.Set;
 public class 二叉树的最近公共祖先_lc_236 {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         return null;
-
-    }
+        }
 
     /**该解法基于回溯
      * 使用后序遍历实现回溯

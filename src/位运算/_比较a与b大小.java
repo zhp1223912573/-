@@ -6,6 +6,13 @@ package 位运算;
  * 给顶两个int型变量a，b，不使用比较符合的情况下得到较大值
  */
 public class _比较a与b大小 {
+    public static void main(String[] args) {
+        System.out.println("dada");
+        String s = "sada";
+        a s1 = (String s2)->{
+            System.out.println(s);
+        };
+    }
     /**反转1为0，0为1
      *
      * @param n 为1或为0

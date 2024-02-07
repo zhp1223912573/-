@@ -17,6 +17,7 @@ public class 找到最终的安全状态_lc_802 {
      * 题目要求找到某个节点到达所有他能到达的终端节点的过程不经过环.
      * 设置出度数组以及当前节点的前一个节点的数组。
      * 从出度为0的节点，也就是终端节点出发，逆序找到符合条件的节点。
+     *
      * @param graph
      * @return
      */
@@ -25,35 +26,35 @@ public class 找到最终的安全状态_lc_802 {
         int n = graph.length;
         List<List<Integer>> pre = new ArrayList<>();
         int de[] = new int[n];
-        for(int i=0;i<n;i++){
+        for (int i = 0; i < n; i++) {
             pre.add(new LinkedList<>());
         }
 
         //填充出度和前节点数组
-        for(int i=0;i<n;i++){
-            for(int next:graph[i]){
+        for (int i = 0; i < n; i++) {
+            for (int next : graph[i]) {
                 pre.get(next).add(i);
-                de[i] ++;
+                de[i]++;
             }
         }
 
         //现将终端节点加入
         Deque<Integer> deque = new LinkedList<>();
-        for(int i=0;i<n;i++){
-            if(de[i]==0) deque.add(i);
+        for (int i = 0; i < n; i++) {
+            if (de[i] == 0) deque.add(i);
         }
 
         //不断移除终端节点，并将新的终端节点加入
         List<Integer> ans = new LinkedList<>();
-        while(!deque.isEmpty()){
+        while (!deque.isEmpty()) {
             int node = deque.pollFirst();
             ans.add(node);
-            for(int previous:pre.get(node)){
+            for (int previous : pre.get(node)) {
                 de[previous]--;
-                if(de[previous]==0) deque.add(previous);
+                if (de[previous] == 0) deque.add(previous);
             }
         }
-        ans.sort((a,b)->a-b);
+        ans.sort((a, b) -> a - b);
         return ans;
     }
 
@@ -61,22 +62,24 @@ public class 找到最终的安全状态_lc_802 {
      * 基于dfs
      */
     int visit[];
-    boolean dfs(int node,int [][] graph){
-        if(visit[node]==1) return true;
-        if(visit[node]==-1) return false;
-        visit[node]=1;
-        for(int nx:graph[node]){
-            if(dfs(nx,graph)) return true;
+
+    boolean dfs(int node, int[][] graph) {
+        if (visit[node] == 1) return true;
+        if (visit[node] == -1) return false;
+        visit[node] = 1;
+        for (int nx : graph[node]) {
+            if (dfs(nx, graph)) return true;
         }
-        visit[node]=-1;
+        visit[node] = -1;
         return false;
     }
-    public List<Integer> eventualSafeNodes1(int[][] graph){
+
+    public List<Integer> eventualSafeNodes1(int[][] graph) {
         List<Integer> ans = new LinkedList<>();
-        int n =graph.length;
+        int n = graph.length;
         visit = new int[n];
-        for(int i=0;i<n;i++){
-            if(!dfs(i,graph)) ans.add(i);
+        for (int i = 0; i < n; i++) {
+            if (!dfs(i, graph)) ans.add(i);
         }
         return ans;
     }

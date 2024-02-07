@@ -50,7 +50,6 @@ public class 全排列II_lc_47 {
             backtract(ans,box,nums,visited,index+1);
             visited[i] = false;
             box.remove(index);
-
         }
     }
 

@@ -20,17 +20,17 @@ public class 二叉搜索树的插入操作_lc_701 {
      * @return
      */
 
-    public TreeNode insert(TreeNode root, int val){
-        if(root==null) {
-            TreeNode node = new TreeNode (val);
+    public TreeNode insert(TreeNode root, int val) {
+        if (root == null) {
+            TreeNode node = new TreeNode(val);
             return node;
         }
 
-        if(root.val>val) {
-            root.left=insert(root.left,val);
+        if (root.val > val) {
+            root.left = insert(root.left, val);
 
-        }else if(root.val<val){
-            root.right=insert(root.right,val);
+        } else if (root.val < val) {
+            root.right = insert(root.right, val);
         }
 
         return root;
@@ -40,10 +40,11 @@ public class 二叉搜索树的插入操作_lc_701 {
      * 递归过程也可以不返回节点
      * 但需要一个parent点
      */
-    TreeNode parent ;
-    public void  insert1(TreeNode root,int val){
+    TreeNode parent;
 
-        if(root==null) {
+    public void insert1(TreeNode root, int val) {
+
+        if (root == null) {
             TreeNode node = new TreeNode(val);
             if (parent.val > val) {
                 parent.left = node;
@@ -51,43 +52,43 @@ public class 二叉搜索树的插入操作_lc_701 {
                 parent.right = node;
             }
 
-            return ;
+            return;
         }
 
-            parent=root;
-            if(root.val>val){
-                insert1(root.left,val);
-            }else{
-                insert1(root.right,val);
-            }
-
-            return ;
+        parent = root;
+        if (root.val > val) {
+            insert1(root.left, val);
+        } else {
+            insert1(root.right, val);
         }
+
+        return;
+    }
 
 
     /**
      * 迭代
      */
-    public TreeNode insert2(TreeNode root,int val){
-        if(root==null){
+    public TreeNode insert2(TreeNode root, int val) {
+        if (root == null) {
             return new TreeNode(val);
         }
 
         TreeNode cur = root;
         TreeNode parent = root;
-        while(cur!=null){
-            parent=cur;
-            if(cur.val>val){
-                cur=cur.left;
-            }else{
-                cur=cur.right;
+        while (cur != null) {
+            parent = cur;
+            if (cur.val > val) {
+                cur = cur.left;
+            } else {
+                cur = cur.right;
             }
         }
 
-        if(parent.val>val){
-            parent.left=new TreeNode(val);
-        }else{
-            parent.right=new TreeNode(val);
+        if (parent.val > val) {
+            parent.left = new TreeNode(val);
+        } else {
+            parent.right = new TreeNode(val);
         }
 
         return root;

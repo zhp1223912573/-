@@ -1,6 +1,5 @@
 package shiyan.LinkedList;
 
-import org.junit.Test;
 
 /**
  * @author zhp

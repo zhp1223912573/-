@@ -55,7 +55,7 @@ public class Main {
         for(int i=0;i<n;i++){
             nums[i][0] = scan.nextInt();
             nums[i][1] = scan.nextInt();
-            //存在电站距离大于最大续航运行距离，直接放回
+            //存在电站距离大于最大续航运行距离，直接返回
             if(i!=0){
                 if(nums[i][0]-nums[i-1][0]>1000){
                     System.out.println(-1);
@@ -123,6 +123,7 @@ public class Main {
      * @param n
      * @param nums
      * @return
+     * 状态定义：dp[i][j] 处于第i个充电桩，剩余电量为j，走到目的地的最少时间开销。
      */
     static int reversedp(int d,int n,int nums[][]){
         int dp[][] = new int[n+1][10001];

@@ -15,28 +15,43 @@ public class 去除有序数组的重复位_lc_26 {
      * 如果一致，说明不是第一次出现，
      * 如果不一致，表示当数是第一次出现，
      * 再套用经典的快慢指针解法解答即可。
+     *    作者：max-LFszNScOfE
+     *         链接：https://leetcode.cn/problems/remove-duplicates-from-sorted-array/solution/shuang-zhi-zhen-shan-chu-zhong-fu-xiang-dai-you-hu/
+     *         来源：力扣（LeetCode）
+     *         著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      * @param nums
      * @return
      */
     public int removeDuplicates(int[] nums) {
-        if(nums==null){
+        if(nums == null || nums.length == 0) return 0;
+        int p = 0;
+        int q = 1;
+        while(q < nums.length){
+            if(nums[p] != nums[q]){
+                nums[p + 1] = nums[q];
+                p++;
+            }
+            q++;
+        }
+        return p + 1;
+
+
+    }
+
+    // 快慢指针，快指针指向为排序的第一个数，慢指针指向排序后的最后一个数
+    public int removeDuplicates1(int[] nums) {
+        int n = nums.length;
+        if (n == 0) {
             return 0;
         }
-
-        if(nums.length==1){
-            return 1;
-        }
-
-        int left = 0;
-        int right = 0;
-        int n = nums.length;
-        while(right<n){
-            if(nums[right]!=nums[right-1]){//该数字第一次出现
-                nums[left] = nums[right];
-                left++;
+        int fast = 1, slow = 1;
+        while (fast < n) {
+            if (nums[fast] != nums[fast - 1]) {
+                nums[slow] = nums[fast];
+                ++slow;
             }
-            right++;
+            ++fast;
         }
-        return left+1;
+        return slow;
     }
 }

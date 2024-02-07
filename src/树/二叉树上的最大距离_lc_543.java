@@ -40,7 +40,7 @@ public class 二叉树上的最大距离_lc_543 {
 
         info leftinfo = proceess(root.left);
         info rightinfo = proceess(root.right);
-        int maxDistance = Math.max(leftinfo.height+rightinfo.height+1,
+        int maxDistance = Math.max(leftinfo.height+rightinfo.height,
                 Math.max(leftinfo.maxDistance,rightinfo.maxDistance));
         int height = Math.max(leftinfo.height,rightinfo.height)+1;
         return new info(maxDistance,height);

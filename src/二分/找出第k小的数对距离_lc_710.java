@@ -84,7 +84,7 @@ public class 找出第k小的数对距离_lc_710 {
             //根据数量之和再来缩放距离边界
             int cnt = 0;
             for(int i=0,j=0;j<n;j++){
-                //如果窗口内值大于mid，需要右移做指针缩小窗口
+                //如果窗口内值大于mid，需要右移i指针缩小窗口
                 while(nums[j]-nums[i]>mid){
                     i++;
                 }

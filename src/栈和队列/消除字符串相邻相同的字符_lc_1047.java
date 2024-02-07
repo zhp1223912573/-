@@ -1,5 +1,7 @@
 package 栈和队列;
 
+import java.util.Stack;
+
 /**
  * @author zhp
  * @date 2021-11-16 11:42
@@ -58,5 +60,30 @@ public class 消除字符串相邻相同的字符_lc_1047 {
         }
 
         return String.valueOf(ch,0,top+1);
+    }
+
+    /**
+     * 基于栈
+     * @param s
+     * @return
+     */
+    public String removeDuplicates1(String s) {
+        Stack<Character> stack = new Stack<>();
+        for(char ch:s.toCharArray()){
+            boolean flag = false;
+            while(!stack.isEmpty()&&stack.peek()==ch){
+                stack.pop();
+                flag = true;
+                break;
+            }
+            if(flag) continue;
+            stack.push(ch);
+
+        }
+        StringBuilder ans = new StringBuilder();
+        while(!stack.isEmpty()){
+            ans.append(stack.pop());
+        }
+        return ans.reverse().toString();
     }
 }

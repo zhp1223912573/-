@@ -72,13 +72,22 @@ public class Main {
 
         int ans = 100010;
 
+        //选第一扇门
         ans = Math.min(dfs(door[index][0],index+1,cost+ (last==door[index][0]?0:door[index][0]*last),door),ans);
+        //选第二扇门
         ans = Math.min(dfs(door[index][1],index+1,cost+ (last==door[index][1]?0:door[index][1]*last),door),ans);
 
         return ans;
     }
 
 
+    /**
+     * dp[i][j]表示走到第i层的第j扇门最少的时间开销
+     * @param n
+     * @param m
+     * @param door
+     * @return
+     */
     static int dp(int n,int m,int door[][]){
         int dp[][] = new int[n+1][2];
         int ans = Integer.MAX_VALUE;

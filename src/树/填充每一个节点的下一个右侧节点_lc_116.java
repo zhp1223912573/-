@@ -15,27 +15,28 @@ public class 填充每一个节点的下一个右侧节点_lc_116 {
      * 层序遍历
      * 逆序读取每层的节点，设置一个next节点表示当前节点的下一个节点
      * 将当前节点的next指针指向next节点即可完成连接
+     *
      * @param root
      * @return
      */
     public Node connect(Node root) {
-        if(root==null){
+        if (root == null) {
             return null;
         }
 
         Queue<Node> queue = new LinkedList<>();
         queue.add(root);
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             int size = queue.size();
             Node next = null;
-            for(int i=0;i<size;i++){
+            for (int i = 0; i < size; i++) {
                 Node cur = queue.poll();
                 cur.next = next;
                 next = cur;
-                if(cur.right!=null){
+                if (cur.right != null) {
                     queue.add(cur.right);
                 }
-                if(cur.left!=null){
+                if (cur.left != null) {
                     queue.add(cur.left);
                 }
             }
@@ -48,20 +49,20 @@ public class 填充每一个节点的下一个右侧节点_lc_116 {
      * 空间开销为O(1)的递归和迭代实现
      * 分析题意，该树为完美二叉树，则属于同一节点的左右两孩子可以直接相连，
      * 关键问题在于不同父母的相邻孩子如何相连？
-     *  画图观察可发现，当当前要连接的节点的父母节点拥有下一个节点next，那么
-     *      该父母节点的右孩子的相邻节点也就是next指针指向的节点，就是父母节点的兄弟节点的孩子，
-     *      又因为此树是完美二叉树，则该父母节点的兄弟节点一定有左孩子，那么将当前父母节点的
-     *      *      右孩子同父母节点的兄弟节点的左孩子相连即可。
+     * 画图观察可发现，当当前要连接的节点的父母节点拥有下一个节点next，那么
+     * 该父母节点的右孩子的相邻节点也就是next指针指向的节点，就是父母节点的兄弟节点的孩子，
+     * 又因为此树是完美二叉树，则该父母节点的兄弟节点一定有左孩子，那么将当前父母节点的
+     * *      右孩子同父母节点的兄弟节点的左孩子相连即可。
      */
-    public Node connect1(Node root){
-        if(root==null){
+    public Node connect1(Node root) {
+        if (root == null) {
             return null;
         }
 
-        if(root.left!=null){
-            root.left.next=root.right;
+        if (root.left != null) {
+            root.left.next = root.right;
         }
-        if(root.right!=null&&root.next!=null){
+        if (root.right != null && root.next != null) {
             root.right.next = root.next.left;
         }
 
@@ -74,29 +75,23 @@ public class 填充每一个节点的下一个右侧节点_lc_116 {
 
     /**
      * 迭代的实现和递归基本一致
+     *
      * @param root
      * @return
      */
-    public Node connect2(Node root){
-        Node leftmost = root;
-        //每一层都从最左边的节点开始
-        while(leftmost.left!=null){
-            //设置头节点，开始对每个节点的孩子进行连接操作
-            Node head = leftmost;
-            while(head!=null){
-                //当前节点的左右孩子相连
-                head.left.next = head.right;
-                if(head.next!=null){
-                    head.right.next = head.next.left;
-                }
+    public Node connect2(Node root) {
+        Node leftMost = root;
+        while (leftMost != null) {
+            Node head = leftMost;
+            while (head != null) {
+                if (head.left != null) head.left.next = head.right;
+                if (head.right != null && head.next != null) head.right.next = head.next.left;
                 head = head.next;
             }
-            //向下一层的最左节点移动
-            leftmost = leftmost.left;
+            leftMost = leftMost.left;
         }
         return root;
     }
-
 
 
 }

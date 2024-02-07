@@ -38,7 +38,7 @@ public class 找到k个最接近的元素_lc_658 {
         }else if(x>=ret.get(n-1)){
             return ret.subList(n-k,n);
         }else{
-            //查找x位于ret内的位置
+            //查找x位于ret内的位置,不存在則返回該數應該在的位置
             int index = Collections.binarySearch(ret,x);
             if(index<0){
                 index = -index-1;

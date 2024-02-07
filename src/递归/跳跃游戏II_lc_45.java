@@ -54,7 +54,7 @@ public class 跳跃游戏II_lc_45 {
         for(int i=n-1;i>=0;i--){
             //为什么设置成10000？数值最大为1000，如果设置为Integer.MAX_VALUE,会出现溢出的情况。
             dp[i] = 10000;
-            if(i+nums[i]>=n-1){//当前位置可以一部到达最后的位置
+            if(i+nums[i]>=n-1){//当前位置可以一步到达最后的位置
                 dp[i] = 1;
                 continue;
             }

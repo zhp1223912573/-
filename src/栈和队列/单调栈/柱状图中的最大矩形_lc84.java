@@ -1,4 +1,4 @@
-package 栈和队列;
+package 栈和队列.单调栈;
 
 import java.util.Arrays;
 import java.util.Stack;
@@ -14,6 +14,7 @@ public class 柱状图中的最大矩形_lc84 {
      * 要得到最大矩形，该矩形必然是以某个height[i]为高，符合条件的底为长得到的乘积。
      * 因此问题转化为对每个height[i]找到其最长符合条件的底，也就是以i为高时，i左右两侧最近且大于当前height[i]的坐标。
      * 问题就转换成单调栈求解了。
+     * https://leetcode.cn/problems/0ynMMM/solution/hua-luo-yue-que-wo-zhen-de-zhen-de-nu-li-ohjt/
      */
     public int largestRectangleArea(int[] heights) {
         int l[] = new int[heights.length];

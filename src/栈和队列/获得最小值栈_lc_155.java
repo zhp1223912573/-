@@ -15,33 +15,31 @@ import java.util.Stack;
 public class 获得最小值栈_lc_155 {
     /**
      * 设置两个栈，一个正常装入数据，一个保存每压入一个数时，当前所有数的最小值
-     *
      */
-    public static class minStack{
+    public static class minStack {
         public Stack<Integer> dataStack;//一般数据栈
         public Stack<Integer> minStack;//最小值数据栈
 
-        public minStack(){
-            dataStack = new Stack<Integer>() ;
-            minStack = new Stack<Integer>() ;
+        public minStack() {
+            dataStack = new Stack<Integer>();
+            minStack = new Stack<Integer>();
         }
 
-        public int pop(){
-            if(!dataStack.empty()){
+        public int pop() {
+            if (!dataStack.empty()) {
                 minStack.pop();
                 return dataStack.pop();
             }
             throw new RuntimeException("当前栈为空！");
         }
 
-        public void push(int value){
+        public void push(int value) {
 
-            if(minStack.empty()){
-               minStack.push(value);
-            }
-            else if(value>minStack.peek()){
+            if (minStack.empty()) {
                 minStack.push(value);
-            }else{
+            } else if (value > minStack.peek()) {
+                minStack.push(value);
+            } else {
                 minStack.push(minStack.peek());
             }
 
@@ -49,8 +47,8 @@ public class 获得最小值栈_lc_155 {
 
         }
 
-        public int getMin(){
-            if(minStack.empty()){
+        public int getMin() {
+            if (minStack.empty()) {
                 throw new RuntimeException("栈为空！");
             }
             return minStack.peek();

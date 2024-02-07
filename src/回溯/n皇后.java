@@ -16,6 +16,16 @@ import java.util.List;
 public class n皇后 {
 
     /**
+     *方法1：经典的回溯算法
+     * @param n
+     * @return
+     */
+    public static int num1(int n){
+        int record [] = new int[n];
+        return process1(0,record,n);
+    }
+
+    /**
      * 回溯函数：
      * 在每行上尝试在不同列位置上摆放皇后，如果当前已经摆放的皇后符合要求就继续向下一行摆放，
      * 不符合要求就重新挑选一个摆放在当前行，直到全部摆放完成
@@ -36,7 +46,6 @@ public class n皇后 {
                 res += process1(i+1,record,n);
             }
         }
-
         return res;
     }
 
@@ -57,17 +66,6 @@ public class n皇后 {
         return true;
     }
 
-    /**
-     *方法1：经典的回溯算法
-     * @param n
-     * @return
-     */
-    public static int num1(int n){
-
-
-        int record [] = new int[n];
-        return process1(0,record,n);
-    }
 
     /**
      * 方法2：利用位运算的特性取代record数组的遍历
@@ -111,7 +109,7 @@ public class n皇后 {
         return res;
     }
 
-    /**
+    /**方法3
      * 与方法1的区别在于，方法1通过检验函数去循环检验当前放置方式是否可行，不可行则退出。
      * 而当前方法通过booleam数组，记录对应列号，斜线，反斜线号来标注是否可以放置，
      * 通过空间换取时间。
@@ -120,11 +118,11 @@ public class n皇后 {
      */
     public List<List<String>> solveNQueens(int n) {
         ArrayList<List<String>> ans = new ArrayList<>();
-        dfs(0,new boolean[n],new boolean [30],new boolean[40],n,new int[n],ans);
+        process3(0,new boolean[n],new boolean [30],new boolean[40],n,new int[n],ans);
         return ans;
     }
 
-    void dfs(int row,boolean col[],boolean d1[],boolean d2[],int n,int queen[],List<List<String>> ans){
+    void process3(int row,boolean col[],boolean d1[],boolean d2[],int n,int queen[],List<List<String>> ans){
         if(row==n){
             ans.add(generate(queen));
             return;
@@ -135,7 +133,7 @@ public class n皇后 {
             if(col[i] || d1[i+row] || d2[i-row+9]) continue;
             queen[row] = i;
             col[i] = d1[i+row] = d2[i-row+9] = true;
-            dfs(row+1,col,d1,d2,n,queen,ans);
+            process3(row+1,col,d1,d2,n,queen,ans);
             col[i] = d1[i+row] = d2[i-row+9] = false;
         }
     }

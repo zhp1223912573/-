@@ -5,7 +5,7 @@ import java.util.Stack;
 /**
  * @author zhp
  * @date 2021-11-16 11:17
- *
+ *https://leetcode.cn/problems/valid-parentheses/
  */
 public class 括号_lc_20 {
     public boolean isValid(String s) {

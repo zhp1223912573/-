@@ -26,7 +26,7 @@ public class 路径总和II_lc_113 {
 
         //添加当前节点
         path.add(root.val);
-        if((target-root.val)==0&&root.left==null&&root.right==null) ans.add(new ArrayList(path));
+        if((target==root.val)&&root.left==null&&root.right==null) ans.add(new ArrayList(path));
         getAllPath(root.left,target-root.val,path);
         getAllPath(root.right,target-root.val,path);
         //移除当前节点

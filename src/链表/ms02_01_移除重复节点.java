@@ -14,27 +14,37 @@ public class ms02_01_移除重复节点 {
     class ListNode {
         int val;
         ListNode next;
-        ListNode() {}
-        ListNode(int val) { this.val = val; }
-        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
     }
+
     /**
      * set+顺序遍历
+     *
      * @param head
      * @return
      */
     public ListNode removeDuplicateNodes(ListNode head) {
-
         ListNode pre = null;
         HashSet<Integer> set = new HashSet();
         ListNode cur = head;
-        while(cur!=null){
-            if(!set.contains(cur.val)){
+        while (cur != null) {
+            if (!set.contains(cur.val)) {
                 set.add(cur.val);
                 pre = cur;
                 cur = cur.next;
-            }else{
-                pre.next =cur.next;
+            } else {
+                pre.next = cur.next;
                 cur = cur.next;
             }
         }
@@ -46,12 +56,12 @@ public class ms02_01_移除重复节点 {
      */
     public ListNode removeDuplicateNodes1(ListNode head) {
         ListNode now = head;
-        while(now!=null){
+        while (now != null) {
             ListNode cur = now;
-            while(cur.next!=null){
-                if(cur.next.val==now.val){
+            while (cur.next != null) {
+                if (cur.next.val == now.val) {
                     cur.next = cur.next.next;
-                }else{
+                } else {
                     cur = cur.next;
                 }
             }
